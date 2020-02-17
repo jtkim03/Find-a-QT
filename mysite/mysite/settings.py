@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'login',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -134,4 +133,4 @@ AUTHENTICATION_BACKENDS = (
 )
 
 SITE_ID = 2
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/" #TODO create profile page
