@@ -26,8 +26,8 @@ SECRET_KEY = 'afewbeguta=wh-3)4717_s$vn&1xl4#^67dckf+f4oxb=p(_m3'
 DEBUG = True
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
-ALLOWED_HOSTS = []
 
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 # Application definition
 
