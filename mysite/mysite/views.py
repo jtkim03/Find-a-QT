@@ -4,6 +4,5 @@ from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
-    template = "homepage.html"
     context = {}
-    return render(request,template,context)
+    return render(request,'find_a_qt/home.html',context)
