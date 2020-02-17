@@ -27,7 +27,7 @@ DEBUG = True
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
-ALLOWED_HOSTS = ['127.0.0.1:8000', 'findaqt.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'findaqt.herokuapp.com']
 
 # Application definition
 
