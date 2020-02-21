@@ -20,8 +20,8 @@ from .views import home
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    #path('',TemplateView.as_view(template_name = 'find_a_qt/home.html')), #TODO Merge this login template with homepage
+    path('',TemplateView.as_view(template_name = 'find_a_qt/home.html')), #TODO Merge this login template with homepage
     path('admin/', admin.site.urls),
-    url(r'^$', home, name = "home"),
+    #url(r'^$', home, name = "home"),
     path('accounts/', include('allauth.urls')),
 ]
