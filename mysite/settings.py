@@ -140,3 +140,7 @@ AUTHENTICATION_BACKENDS = (
 
 SITE_ID = 2
 LOGIN_REDIRECT_URL = "/" #TODO create profile page
+
+if 'DATABASE_URL' in os.environ:
+    import dj_database_url
+    DATABASES = {'default': dj_database_url.config()}
