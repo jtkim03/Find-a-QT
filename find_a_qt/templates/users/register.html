@@ -15,7 +15,7 @@
     </form>
     <div class="border-top pt-3">
       <small class="text-muted">
-        Already Have An Account? <a class="ml-2" href="#">Sign In</a>
+        Already Have An Account? <a class="ml-2" href="{% provider_login_url 'google' %}">Login With Google</a>
       </small>
     </div>
   </div>
@@ -28,8 +28,6 @@
 <p>Welcome, {{ user.username }} !</p>
 <a href="/register"></a>
    {% else %}
-<h1>My Google Login Project</h1>
-<a href="{% provider_login_url 'google' %}">Login with Google</a>
 {% endif %}
 </body>
 </html>
