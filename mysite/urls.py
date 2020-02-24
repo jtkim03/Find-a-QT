@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
-from .views import home
+from .views import home, register
 from django.views.generic import TemplateView
 
 urlpatterns = [
@@ -24,4 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', home, name = "home"),
     path('accounts/', include('allauth.urls')),
+    path('register/', register, name='register'),
 ]

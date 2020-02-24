@@ -1,6 +1,6 @@
 {% load static %}
 {% load socialaccount %}
-{% providers_media_js %} 
+{% providers_media_js %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -30,8 +30,8 @@
               </div>
               <!-- Navbar Right Side -->
               <div class="navbar-nav">
-                <a class="nav-item nav-link" href ="{% provider_login_url "google" %}">Login</a> 
-                <a class="nav-item nav-link" href="#">Register</a>
+                <a class="nav-item nav-link" href ="{% provider_login_url "google" %}">Login</a>
+                <a class="nav-item nav-link" href="{% provider_login_url "google" %}">Register</a>
               </div>
             </div>
           </div>

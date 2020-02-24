@@ -6,3 +6,6 @@ from django.http import HttpResponse
 def home(request):
     context = {}
     return render(request,'find_a_qt/home.html',context)
+
+def register(request):
+    return render(request, 'users/register.html')

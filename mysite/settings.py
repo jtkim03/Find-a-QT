@@ -127,11 +127,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTHENTICATION_BACKENDS = ( 
+AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 
 )
 
 SITE_ID = 2
-LOGIN_REDIRECT_URL = "/" #TODO create profile page
+LOGIN_REDIRECT_URL = "/register" #TODO create profile page
+
