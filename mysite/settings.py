@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -126,6 +127,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+'''
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+'''
 AUTHENTICATION_BACKENDS = ( 
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
