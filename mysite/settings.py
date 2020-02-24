@@ -26,7 +26,7 @@ SECRET_KEY = 'afewbeguta=wh-3)4717_s$vn&1xl4#^67dckf+f4oxb=p(_m3'
 DEBUG = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'find-a-qt.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'find-a-qt2.herokuapp.com', 'localhost']
 
 # Application definition
 
