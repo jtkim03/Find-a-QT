@@ -1,6 +1,6 @@
 language: python
 python:
-- '3.7.1'
+- 3.7.1
 install:
 - pip install -r requirements.txt
 script:
@@ -8,7 +8,7 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: j1X/p1VmF/GHxyp+gPKTn5ZaabBKg08vuCExP0Bhem99McN4gFjRoBgkB2G1ZMqyDHysvxblqlzBwk6YpNWJkLsRK9msTLqBElntIlPblxF1lFdEHmI1U1iJTbqGiUYHWwiiM9jb8MX2nQEPU7FuCFx/rSU49rwXkHI6J/QTW16wwaa+OjAvHduK3g5snqIk4tj4L/P9yCH29BlLFkDUE/F5gw8/mKKBXozP20+/LEjMwgtFvAaUQ1oS4cJM1/SlD57l/AgNyZ0laPy9Y8dEcp+AOOb7pxRFxPogdjbeH6jt7AeVwmre9twuMosOc1VAZlFxeiTjmvNulphzaVHMlJy9evPcMbbsDcyQgISu1ktyEq04dmd31tG2rbugEXzsUnnNF6nq9V8mOiE9SeNIiCu3+KZguhuVVLgpMyrJIqE4N/EWMEfW6i20ht6Xpm7fUj0J8geQpI7hWEV9jjyja/Q+Y6p8dykq0Srn71MHZEnAyL0NhcCgerHcQb2UTjZHCXARIxdlqxkvd/7blH4UYJ0VhIjt1ye8B0wlArXVM6JbgoxUNrV31HhfijsjqdmxHR1N4epRkTclPEITDItvvJUAjuXdz/SnipojtXo3BPaoSOCkEOe5dym6ZoG/eXxCK7W7wUFOzBa3LgSpyH7fQkIymODINDTxEp2cqjB7bjU=
-  app: find-a-qt2
+    secure: fSA0zQGisISywu33pyIXteINzPRZ2xEICgOn099TkpDnAlp+L5fcrWMnlXxz6LZVtmgnyAuyxbOnZNfggnFK1AqJzNydCyo8+RQUkTDHVxkckLJv3nfFfPbk1ePPw8Ic7X6q4hGv3P98mORY/1YpzcrVrJj4mj5gOpAZrX2mwfyKflSuWlqi/Gb+wvRuJlUI+yUCSwbO7PxTGCRXABezorUExx7sKTOpkTksuTMHCRl5OvSFainW6AlBZDEhA1xfmFZ9Kdtridk7dPeKORzDsPtOQWb42gjQduP4G3bVzBZ7ngzO29LosLvQt+O4x89FsnMYClqKBFlOoFtl/fwwa1nXZIjOUmaYUF763eplK3K8m2Bxs9+zeHxBXmOGUceVLKKEwPhICHRzYvlfpOKTIMmnab+viCmnePoJ08zqO9Wf+Gk7gomRaj4rxzbhjTAq5ABWGJKnNAHO0VxLX0uwcQ0mK8VSo7RWH5xa7HBjaX5cPlmQs2MGhKYU4eLkNiW1SqV9TdEmNHlcL08CQhrBDOd2whmTTyQOysxe9NTKeV3IscF+35Utcpawu0CG/DR/UcwqBDCwLNT3LZDDoW0AjeHdtsGfkyzRtuBzevxzKkVSacZhGt8CgmFhyOb00nzF2rVFguPin9W9ujbh75tlGS2pYo9ksmos+J25nrQO+U4=
+  app: project-101-find-a-qt
   on:
     repo: uva-cs3240-s20/project-101-find-a-qt
