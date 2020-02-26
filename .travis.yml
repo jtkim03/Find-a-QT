@@ -9,6 +9,6 @@ deploy:
   provider: heroku
   api_key:
     secure: d25a7f53-92ae-4a18-84f2-0b1ef4470318
-  app: project-101-find-a-qt
+  app: find-a-qt2
   on:
     repo: uva-cs3240-s20/project-101-find-a-qt
