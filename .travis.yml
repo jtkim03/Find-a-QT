@@ -8,7 +8,7 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: fSA0zQGisISywu33pyIXteINzPRZ2xEICgOn099TkpDnAlp+L5fcrWMnlXxz6LZVtmgnyAuyxbOnZNfggnFK1AqJzNydCyo8+RQUkTDHVxkckLJv3nfFfPbk1ePPw8Ic7X6q4hGv3P98mORY/1YpzcrVrJj4mj5gOpAZrX2mwfyKflSuWlqi/Gb+wvRuJlUI+yUCSwbO7PxTGCRXABezorUExx7sKTOpkTksuTMHCRl5OvSFainW6AlBZDEhA1xfmFZ9Kdtridk7dPeKORzDsPtOQWb42gjQduP4G3bVzBZ7ngzO29LosLvQt+O4x89FsnMYClqKBFlOoFtl/fwwa1nXZIjOUmaYUF763eplK3K8m2Bxs9+zeHxBXmOGUceVLKKEwPhICHRzYvlfpOKTIMmnab+viCmnePoJ08zqO9Wf+Gk7gomRaj4rxzbhjTAq5ABWGJKnNAHO0VxLX0uwcQ0mK8VSo7RWH5xa7HBjaX5cPlmQs2MGhKYU4eLkNiW1SqV9TdEmNHlcL08CQhrBDOd2whmTTyQOysxe9NTKeV3IscF+35Utcpawu0CG/DR/UcwqBDCwLNT3LZDDoW0AjeHdtsGfkyzRtuBzevxzKkVSacZhGt8CgmFhyOb00nzF2rVFguPin9W9ujbh75tlGS2pYo9ksmos+J25nrQO+U4=
+    secure: d25a7f53-92ae-4a18-84f2-0b1ef4470318
   app: project-101-find-a-qt
   on:
     repo: uva-cs3240-s20/project-101-find-a-qt
