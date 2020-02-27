@@ -18,10 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import home
 from django.views.generic import TemplateView
+from . import views
 
 urlpatterns = [
     path('',TemplateView.as_view(template_name = 'find_a_qt/home.html')), #TODO Merge this login template with homepage
     path('admin/', admin.site.urls),
     url(r'^$', home, name = "home"),
     path('accounts/', include('allauth.urls')),
+    path('<int:tutor_id>/', views.detail, name='detail'),
+    # ex: /polls/5/results/
 ]
