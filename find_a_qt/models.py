@@ -22,6 +22,6 @@ class Student(models.Model):
         default=FRESHMAN,
     )
 
-    major = models.CharField(max_length=50)
+    major = models.CharField(max_length=55)
     phone_number = PhoneNumberField(null=False, blank=False, unique=True)
     name = models.CharField(max_length=50)
