@@ -25,6 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', home, name = "home"),
     path('accounts/', include('allauth.urls')),
-    path('<int:tutor_id>/', views.detail, name='detail'),
     # ex: /polls/5/results/
 ]
