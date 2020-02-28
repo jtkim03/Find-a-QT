@@ -32,6 +32,8 @@ ALLOWED_HOSTS = ['127.0.0.1', 'find-a-qt2.herokuapp.com', 'localhost']
 
 INSTALLED_APPS = [
     'find_a_qt.apps.FindAQtConfig',
+    'users.apps.UsersConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
@@ -45,6 +47,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 ]
+
+#AUTH_USER_MODEL = 'users.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -142,7 +146,7 @@ AUTHENTICATION_BACKENDS = (
 
 )
 
-SITE_ID = 2
+SITE_ID = 2 #why is it 2
 LOGIN_REDIRECT_URL = "/" #TODO create profile page
 
 if 'DATABASE_URL' in os.environ:
