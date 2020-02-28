@@ -88,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'find-a-qt',
         'USER': 'postgres',
-        'PASSWORD': 'sdp2130m',
+        'PASSWORD': '1234',
         'HOST': 'localhost',
     }
 }
