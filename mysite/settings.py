@@ -32,6 +32,8 @@ ALLOWED_HOSTS = ['127.0.0.1', 'find-a-qt2.herokuapp.com', 'localhost']
 
 INSTALLED_APPS = [
     'find_a_qt.apps.FindAQtConfig',
+    'users.apps.UsersConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
@@ -40,11 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'crispy_forms',
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 ]
+
+#AUTH_USER_MODEL = 'users.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,7 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -86,8 +92,8 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'find_a_qt',
-        'USER': 'FindAQT',
+        'NAME': 'find-a-qt',
+        'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST': 'localhost',
     }
@@ -130,6 +136,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 '''
 STATICFILES_DIRS = (
@@ -142,7 +149,7 @@ AUTHENTICATION_BACKENDS = (
 
 )
 
-SITE_ID = 2
+SITE_ID = 2 #why is it 2
 LOGIN_REDIRECT_URL = "/" #TODO create profile page
 
 if 'DATABASE_URL' in os.environ:

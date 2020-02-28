@@ -4,9 +4,15 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Bootstrap CSS -->
+    <base href = "/">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'find_a_qt/style.css' %}">
 
     <title>Welcome to Find a QT</title>
   </head>
@@ -26,7 +32,7 @@
               <!-- Navbar Right Side -->
               <div class="navbar-nav">
                 <a class="nav-item nav-link" href ="{% provider_login_url "google" %}">Login</a>
-                <a class="nav-item nav-link" href="{% provider_login_url "google" %}">Register</a>
+                <a class="nav-item nav-link" href="#">Register</a>
               </div>
             </div>
           </div>
@@ -36,6 +42,13 @@
       <main role="main" class="container">
         <div class="row">
           <div class="col-md-8">
+            {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+            {% endif %}
             {% block content %}{% endblock %}
           </div>
           <div class="col-md-4">
