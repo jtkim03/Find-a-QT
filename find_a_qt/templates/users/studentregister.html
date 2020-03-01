@@ -37,7 +37,10 @@
 <center>
 <h1>Register as Student</h1>
 <form method="POST" action="">{% csrf_token %}
-  {{ form.as_p }}
+  <div style="width:25%">
+    {{ form.as_p }}
+  </div>
+
 
   <input type="submit" value="Register">
 </form>

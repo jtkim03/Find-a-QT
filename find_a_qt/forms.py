@@ -14,7 +14,11 @@ class StudentRegistration(ModelForm):
         fields = ('name', 'year_in_school', 'major', 'phone_number')
         widgets = {
             'name' : forms.TextInput(
-                attrs={'class' : 'form-control', 'placeholder' : 'Enter First and Last Names', 'aria-label' : 'Student', 'aria-describedby' : 'add-btn'}
+                attrs={'class' : 'form-control',
+                       'placeholder' : 'Enter First and Last Names',
+                       'aria-label' : 'Student',
+                       'aria-describedby' : 'add-btn',
+                       'size': 1}
             ),
             'major': forms.TextInput(
                 attrs={'class' : 'form-control',

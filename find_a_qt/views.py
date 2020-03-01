@@ -16,9 +16,10 @@ def student_register(request):
 
     if form.is_valid():
         form.save()
+        context['form'] = form
+        return render(request, 'find_a_qt/home.html', context)
 
     context['form'] = form
-
     return render(request, 'users/studentregister.html', context)
 
 def tutor_register(request):
@@ -27,6 +28,9 @@ def tutor_register(request):
 
     if form.is_valid():
         form.save()
+        context['form'] = form
+        return render(request, 'find_a_qt/home.html', context)
+
 
     context['form'] = form
 
