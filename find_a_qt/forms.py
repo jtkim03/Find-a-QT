@@ -21,9 +21,15 @@ class StudentRegistration(ModelForm):
                        'placeholder' : 'Enter Major',
                        'aria-label' : 'Student',
                        'aria-describedby' : 'add-btn'}
-            )
+            ),
 
-        }
+            'phone_number': forms.TextInput(
+             attrs={'class' : 'form-control',
+                   'placeholder' : 'Enter Phone Number',
+                   'aria-label' : 'Student',
+                   'aria-describedby' : 'add-btn'}
+        )
+    }
 
 
 class TutorRegistrationForm(ModelForm):
