@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
-from .views import home, register
+from find_a_qt.views import home, student_register, tutor_register
 from django.views.generic import TemplateView
 from users import views as user_views
 
@@ -25,5 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', user_views.register, name='register'),
     path('accounts/', include('allauth.urls')),
-    path('register/', register, name='register'),
+    #path('register/', register, name='register'),
+    path('studentregister/', student_register, name='studentregister'),
+    #path('addstudent/', add_student, name='addstudent')
+    path('tutorregister/', tutor_register, name='tutorregister')
 ]

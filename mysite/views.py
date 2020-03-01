@@ -1,9 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-# Create your views here.
-def home(request):
-    context = {}
-    return render(request,'find_a_qt/home.html',context)
+from find_a_qt.forms import StudentRegistration
+from django.contrib import messages
 
-def register(request):
-    return render(request, 'users/register.html')
+
+# Create your views here.
+def home_view(request):
+    return render(request,'find_a_qt/home.html')
+
+
+def student_register_view(request):
+    return render(request, 'users/studentregister.html')
+
+def tutor_register_view(request):
+    return render(request, 'user/tutorregister.html')
+
