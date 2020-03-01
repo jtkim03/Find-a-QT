@@ -47,9 +47,9 @@ class Tutor(models.Model):
         default=FRESHMAN,
     )
 
-    major = models.CharField(max_length=55, default='Undecided')
-    phone_number = PhoneNumberField(null=False, blank=False, unique=True, default='1-800')
-    name = models.CharField(max_length=50, default='John Doe')
+    major = models.CharField(max_length=55)
+    phone_number = PhoneNumberField(null=False, blank=False, unique=True)
+    name = models.CharField(max_length=50)
 
     number_tutored = 0 #This should be incremented everytime the tutor has tutored a new student
 
