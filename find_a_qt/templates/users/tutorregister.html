@@ -38,8 +38,16 @@
   <h1>Register as Tutor</h1>
   <form method="POST" action="">{% csrf_token %}
     <div style="width:25%">
-      {{ form|crispy }}
+      <p>{{ form.first_name.label_tag }}  {{ user.first_name.upper }}</p>
+      <p>{{ form.last_name.label_tag }}  {{ user.last_name.upper }}</p>
+
+      <p>{{ form.year_in_school.label_tag }}  {{ form.year_in_school }}</p>
+
+      <p>{{ form.major.label_tag }}  {{ form.major }}</p>
+
+      <p>{{ form.phone_number.label_tag }}  {{ form.phone_number }}</p>
     </div>
+
     <input type="submit" value="Register">
   </form>
 </center>

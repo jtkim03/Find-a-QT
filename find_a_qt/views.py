@@ -12,6 +12,7 @@ def home(request):
     context = {}
     return render(request,'find_a_qt/home.html',context)
 
+
 def student_register(request):
     context = {}
     form = StudentRegistration(request.POST or None, request.FILES or None)
