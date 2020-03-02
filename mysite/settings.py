@@ -92,10 +92,11 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'find-a-qt',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
+        'NAME': 'bnvaumqh',  #'find-a-qt',
+        'USER': 'bnvaumqh',  #'postgres',
+        'PASSWORD':'JjdYvivrrpd2lBYtehh5nLJmalKcpuW-',   # '1234',
+        'HOST': 'raja.db.elephantsql.com',
+        'PORT': '5432'
     }
 }
 
