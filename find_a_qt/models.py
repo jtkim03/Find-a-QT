@@ -23,7 +23,8 @@ class Student(models.Model):
 
     major = models.CharField(max_length=55)
     phone_number = PhoneNumberField(null=False, blank=False, unique=True)
-    name = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
@@ -49,7 +50,8 @@ class Tutor(models.Model):
 
     major = models.CharField(max_length=55)
     phone_number = PhoneNumberField(null=False, blank=False, unique=True)
-    name = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
 
     number_tutored = 0 #This should be incremented everytime the tutor has tutored a new student
 
