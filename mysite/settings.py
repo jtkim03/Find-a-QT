@@ -89,10 +89,10 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'find-a-qt',#'bnvaumqh',  #'find-a-qt',
+        'NAME': 'find_a_qt',#'bnvaumqh',  #'find-a-qt',
         'USER': 'postgres',#'bnvaumqh',  #'postgres',
         'PASSWORD':'1234',#'JjdYvivrrpd2lBYtehh5nLJmalKcpuW-',   # '1234',
-        'HOST': 'local', #'raja.db.elephantsql.com',
+        'HOST': 'localhost', #'raja.db.elephantsql.com',
         #'PORT': 'local' #'5432'
     }
 }
@@ -148,11 +148,11 @@ AUTHENTICATION_BACKENDS = (
 )
 
 SITE_ID = 2 #why is it 2
-LOGIN_REDIRECT_URL = "/" #TODO create profile page
+LOGIN_REDIRECT_URL = "/studentregister" #TODO create profile page
 
 if 'DATABASE_URL' in os.environ:
     import dj_database_url
     DATABASES = {'default': dj_database_url.config()}
 
-MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
