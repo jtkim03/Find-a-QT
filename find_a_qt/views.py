@@ -6,6 +6,8 @@ from django import forms
 from .models import Student
 
 # Create your views here.
+def about_view(request):
+    return render(request,'find_a_qt/about.html')
 def home(request):
     context = {}
     return render(request,'find_a_qt/home.html',context)

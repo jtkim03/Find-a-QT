@@ -5,6 +5,8 @@ from django.contrib import messages
 
 
 # Create your views here.
+def about_view(request):
+    return render(request,'find_a_qt/about.html')
 def home_view(request):
     return render(request,'find_a_qt/home.html')
 

@@ -27,7 +27,7 @@ class Student(models.Model):
 
 
     def __str__(self):
-        return self.name
+        return self.first_name
 
 class Tutor(models.Model):
     FRESHMAN = 'FR'
@@ -48,11 +48,14 @@ class Tutor(models.Model):
         default=FRESHMAN,
     )
 
+    #tutor_img = models.ImageField(upload_to='templates/find_a_qt/images/') 
     major = models.CharField(max_length=55)
     phone_number = PhoneNumberField(null=False, blank=False, unique=True)
-    name = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    #bio = models.CharField(max_length=100, default='Hey! I am using Find a QT!')
 
     number_tutored = 0 #This should be incremented everytime the tutor has tutored a new student
 
     def __str__(self):
-        return self.name
+        return self.first_name
