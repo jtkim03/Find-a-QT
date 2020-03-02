@@ -93,7 +93,7 @@ DATABASES = {
         'USER': 'postgres',#'bnvaumqh',  #'postgres',
         'PASSWORD':'1234',#'JjdYvivrrpd2lBYtehh5nLJmalKcpuW-',   # '1234',
         'HOST': 'localhost' #'raja.db.elephantsql.com',
-        #'PORT': 'local' #'5432'
+        'PORT': '5432'
     }
 }
 
