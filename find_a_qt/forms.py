@@ -74,8 +74,8 @@ class TutorRegistrationForm(ModelForm):
                        'placeholder' : 'Enter Phone Number',
                        'aria-label' : 'Student',
                        'aria-describedby' : 'add-btn'}
-            )
-            # 'bio': forms.Textarea(
+            ),
+            # 'bio': forms.TextInput(
             #     attrs={'class' : 'form-control',
             #            'placeholder' : 'Enter Phone Number',
             #            'aria-label' : 'Student',
