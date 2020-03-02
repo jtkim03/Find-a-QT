@@ -48,12 +48,12 @@ class Tutor(models.Model):
         default=FRESHMAN,
     )
 
-    bio = models.CharField(max_length=100, default='Hey! I am using Find a QT!')
     #tutor_img = models.ImageField(upload_to='templates/find_a_qt/images/') 
     major = models.CharField(max_length=55)
     phone_number = PhoneNumberField(null=False, blank=False, unique=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
+    #bio = models.CharField(max_length=100, default='Hey! I am using Find a QT!')
 
     number_tutored = 0 #This should be incremented everytime the tutor has tutored a new student
 

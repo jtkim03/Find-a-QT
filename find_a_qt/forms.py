@@ -47,7 +47,7 @@ class TutorRegistrationForm(ModelForm):
 
     class Meta:
         model = Tutor
-        fields = ('first_name', 'last_name', 'year_in_school', 'major', 'phone_number')
+        fields = ('first_name', 'last_name', 'year_in_school', 'major', 'phone_number') #Add bio later
         widgets = {
             'first_name' : forms.TextInput(
                 attrs={'class' : 'form-control',
@@ -75,4 +75,10 @@ class TutorRegistrationForm(ModelForm):
                        'aria-label' : 'Student',
                        'aria-describedby' : 'add-btn'}
             )
+            # 'bio': forms.Textarea(
+            #     attrs={'class' : 'form-control',
+            #            'placeholder' : 'Enter Phone Number',
+            #            'aria-label' : 'Student',
+            #            'aria-describedby' : 'add-btn'}
+            # )
         }
