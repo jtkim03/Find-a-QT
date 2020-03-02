@@ -13,9 +13,16 @@ class StudentRegistration(ModelForm):
         model = Student
         fields = ('first_name', 'last_name', 'year_in_school', 'major', 'phone_number')
         widgets = {
-            'name' : forms.TextInput(
+            'first_name' : forms.TextInput(
                 attrs={'class' : 'form-control',
-                       'placeholder' : 'Enter First and Last Names',
+                       'placeholder' : 'Enter First Name',
+                       'aria-label' : 'Student',
+                       'aria-describedby' : 'add-btn',
+                       'size': 1}
+            ),
+            'last_name' : forms.TextInput(
+                attrs={'class' : 'form-control',
+                       'placeholder' : 'Enter Last Name',
                        'aria-label' : 'Student',
                        'aria-describedby' : 'add-btn',
                        'size': 1}
@@ -42,8 +49,19 @@ class TutorRegistrationForm(ModelForm):
         model = Tutor
         fields = ('first_name', 'last_name', 'year_in_school', 'major', 'phone_number')
         widgets = {
-            'name' : forms.TextInput(
-                attrs={'class' : 'form-control', 'placeholder' : 'Enter First and Last Names', 'aria-label' : 'Student', 'aria-describedby' : 'add-btn'}
+            'first_name' : forms.TextInput(
+                attrs={'class' : 'form-control',
+                       'placeholder' : 'Enter First Name',
+                       'aria-label' : 'Student',
+                       'aria-describedby' : 'add-btn',
+                       'size': 1}
+            ),
+            'last_name' : forms.TextInput(
+                attrs={'class' : 'form-control',
+                       'placeholder' : 'Enter Last Name',
+                       'aria-label' : 'Student',
+                       'aria-describedby' : 'add-btn',
+                       'size': 1}
             ),
             'major': forms.TextInput(
                 attrs={'class' : 'form-control',

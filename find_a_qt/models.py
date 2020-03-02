@@ -27,7 +27,7 @@ class Student(models.Model):
     last_name = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.name
+        return self.first_name
 
 class Tutor(models.Model):
     FRESHMAN = 'FR'
@@ -58,4 +58,4 @@ class Tutor(models.Model):
     number_tutored = 0 #This should be incremented everytime the tutor has tutored a new student
 
     def __str__(self):
-        return self.name
+        return self.first_name
