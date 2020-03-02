@@ -1,5 +1,4 @@
 from django.db import models
-# hello world
 # Create your models here.
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -24,7 +23,8 @@ class Student(models.Model):
 
     major = models.CharField(max_length=55)
     phone_number = PhoneNumberField(null=False, blank=False, unique=True)
-    name = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
@@ -48,11 +48,12 @@ class Tutor(models.Model):
         default=FRESHMAN,
     )
 
-    major = models.CharField(max_length=55, default='Undecided')
-    phone_number = PhoneNumberField(null=False, blank=False, unique=True, default='1-800')
-    name = models.CharField(max_length=50, default='John Doe')
     bio = models.CharField(max_length=100, default='Hey! I am using Find a QT!')
-    tutor_img = models.ImageField(upload_to='templates/find_a_qt/images/') 
+    #tutor_img = models.ImageField(upload_to='templates/find_a_qt/images/') 
+    major = models.CharField(max_length=55)
+    phone_number = PhoneNumberField(null=False, blank=False, unique=True)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
 
     number_tutored = 0 #This should be incremented everytime the tutor has tutored a new student
 
