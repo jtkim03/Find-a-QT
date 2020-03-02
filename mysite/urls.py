@@ -25,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', user_views.register, name='register'),
     path('accounts/', include('allauth.urls')),
+    path('about', TemplateView.as_view(template_name = 'find_a_qt/about.html')),
 ]

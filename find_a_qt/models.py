@@ -51,6 +51,8 @@ class Tutor(models.Model):
     major = models.CharField(max_length=55, default='Undecided')
     phone_number = PhoneNumberField(null=False, blank=False, unique=True, default='1-800')
     name = models.CharField(max_length=50, default='John Doe')
+    bio = models.CharField(max_length=100, default='Hey! I am using Find a QT!')
+    tutor_img = models.ImageField(upload_to='templates/find_a_qt/images/') 
 
     number_tutored = 0 #This should be incremented everytime the tutor has tutored a new student
 
