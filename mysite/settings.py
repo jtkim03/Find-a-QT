@@ -30,7 +30,6 @@ ALLOWED_HOSTS = ['127.0.0.1', 'find-a-qt2.herokuapp.com', 'localhost']
 INSTALLED_APPS = [
     'find_a_qt.apps.FindAQtConfig',
     'users.apps.UsersConfig',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
@@ -38,9 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'crispy_forms',
-
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -89,11 +86,11 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'find_a_qt',#'bnvaumqh',  #'find-a-qt',
+        'NAME': 'find-a-qt',#'bnvaumqh',  #'find-a-qt',
         'USER': 'postgres',#'bnvaumqh',  #'postgres',
         'PASSWORD':'1234',#'JjdYvivrrpd2lBYtehh5nLJmalKcpuW-',   # '1234',
-        'HOST': 'localhost', #'raja.db.elephantsql.com',
-        #'PORT': 'local' #'5432'
+        'HOST': 'localhost' #'raja.db.elephantsql.com',
+        'PORT': '5432',
     }
 }
 

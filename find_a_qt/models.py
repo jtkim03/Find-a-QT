@@ -58,7 +58,7 @@ class Tutor(models.Model):
     last_name = models.CharField(max_length=50)
     #bio = models.CharField(max_length=100, default='Hey! I am using Find a QT!')
 
-    number_tutored = 0 #This should be incremented everytime the tutor has tutored a new student
+    number_tutored =  models.IntegerField(default = 0) #This should be incremented everytime the tutor has tutored a new student
 
     def __str__(self):
         return self.last_name
