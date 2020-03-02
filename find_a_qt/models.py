@@ -25,6 +25,7 @@ class Student(models.Model):
     phone_number = PhoneNumberField(null=False, blank=False, unique=True)
     name = models.CharField(max_length=50)
 
+
     def __str__(self):
         return self.name
 
