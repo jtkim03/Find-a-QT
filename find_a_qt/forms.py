@@ -7,7 +7,10 @@ from .models import Student, Tutor
 from phonenumber_field.modelfields import PhoneNumberField
 
 
+
 class StudentRegistration(ModelForm):
+
+  # user =
 
     class Meta:
         model = Student
@@ -41,6 +44,7 @@ class StudentRegistration(ModelForm):
                    'aria-describedby' : 'add-btn'}
         )
     }
+
 
 
 class TutorRegistrationForm(ModelForm):
@@ -82,3 +86,4 @@ class TutorRegistrationForm(ModelForm):
             #            'aria-describedby' : 'add-btn'}
             # )
         }
+

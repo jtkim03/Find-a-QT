@@ -30,3 +30,4 @@ urlpatterns = [
     #path('addstudent/', add_student, name='addstudent')
     path('tutorregister/', tutor_register, name='tutorregister')
 ]
+

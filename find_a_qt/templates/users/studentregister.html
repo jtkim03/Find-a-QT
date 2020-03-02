@@ -37,11 +37,13 @@
 </header>
 
 <center>
-<h1>Register as Student</h1>
+<h1>Welcome, {{ user.first_name }} {{user.last_name}}</h1>
 <form method="POST" action="">{% csrf_token %}
   <div style="width:25%">
-    <p>{{ form.first_name.label_tag }}  {{ user.first_name.upper }}</p>
-    <p>{{ form.last_name.label_tag }}  {{ user.last_name.upper }}</p>
+
+    <p>{{ form.first_name.label_tag }}  {{form.first_name}} </p>
+
+    <p>{{ form.last_name.label_tag }}  {{form.last_name}}</p>
 
     <p>{{ form.year_in_school.label_tag }}  {{ form.year_in_school }}</p>
 
