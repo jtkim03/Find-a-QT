@@ -28,7 +28,7 @@ class Student(models.Model):
 
 
     def __str__(self):
-        return self.last_name, self.first_name
+        return self.first_name + ' ' + self.last_name
 
 class Tutor(models.Model):
     FRESHMAN = 'FR'
@@ -49,7 +49,7 @@ class Tutor(models.Model):
         default=FRESHMAN,
     )
 
-    #tutor_img = models.ImageField(upload_to='templates/find_a_qt/images/')
+    #tutor_img = models.ImageField(upload_to='templates/find_a_qt/images/') 
     major = models.CharField(max_length=55)
     phone_number = PhoneNumberField(null=False, blank=False, unique=True)
     first_name = models.CharField(max_length=50)
@@ -59,4 +59,4 @@ class Tutor(models.Model):
     number_tutored = 0 #This should be incremented everytime the tutor has tutored a new student
 
     def __str__(self):
-        return self.last_name, self.first_name
+        return self.first_name + ' ' + self.last_name
