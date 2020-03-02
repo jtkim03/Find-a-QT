@@ -30,7 +30,6 @@ ALLOWED_HOSTS = ['127.0.0.1', 'find-a-qt2.herokuapp.com', 'localhost']
 INSTALLED_APPS = [
     'find_a_qt.apps.FindAQtConfig',
     'users.apps.UsersConfig',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
@@ -38,9 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'crispy_forms',
-
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
