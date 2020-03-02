@@ -1,6 +1,7 @@
 {% load static %}
 {% load socialaccount %}
 {% providers_media_js %}
+{% load crispy_forms_tags %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -37,7 +38,7 @@
   <h1>Register as Tutor</h1>
   <form method="POST" action="">{% csrf_token %}
     <div style="width:25%">
-      {{ form.as_p }}
+      {{ form|crispy }}
     </div>
     <input type="submit" value="Register">
   </form>
