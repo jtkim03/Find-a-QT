@@ -146,11 +146,11 @@ AUTHENTICATION_BACKENDS = (
 
 SITE_ID = 2 #why is it 2
 LOGIN_REDIRECT_URL = "/studentregister" #TODO create profile page
-'''
+
 if 'DATABASE_URL' in os.environ:
     import dj_database_url
     DATABASES = {'default': dj_database_url.config()}
 
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-'''
+
