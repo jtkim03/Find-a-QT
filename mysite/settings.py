@@ -89,8 +89,8 @@ DATABASES = {
         'NAME': 'find-a-qt',#'bnvaumqh',  #'find-a-qt',
         'USER': 'postgres',#'bnvaumqh',  #'postgres',
         'PASSWORD':'1234',#'JjdYvivrrpd2lBYtehh5nLJmalKcpuW-',   # '1234',
-        #'HOST': 'localhost' #'raja.db.elephantsql.com',
-        #'PORT': '5432',
+        'HOST': 'localhost' #'raja.db.elephantsql.com',
+        'PORT': '5433',
     }
 }
 
