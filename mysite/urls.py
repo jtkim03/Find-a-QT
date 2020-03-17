@@ -15,18 +15,21 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from find_a_qt.views import home, student_register, tutor_register
 from django.views.generic import TemplateView
 from users import views as user_views
 
+
 urlpatterns = [
     path('',TemplateView.as_view(template_name = 'find_a_qt/home.html'), name='faqt-home'), #TODO Merge this login template with homepage
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('about', TemplateView.as_view(template_name = 'find_a_qt/about.html')),
+    path('about/', TemplateView.as_view(template_name = 'find_a_qt/about.html')),
     #path('register/', register, name='register'),
     path('studentregister/', student_register, name='studentregister'),
     #path('addstudent/', add_student, name='addstudent')
-    path('tutorregister/', tutor_register, name='tutorregister')
+    path('tutorregister/', tutor_register, name='tutorregister'),
+    path('logout/',auth_views.LogoutView.as_view(template_name = 'find_a_qt/home.html'), name = 'logout'),
 ]

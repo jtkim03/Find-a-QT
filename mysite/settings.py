@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+
+
+
 ]
 
 #AUTH_USER_MODEL = 'users.CustomUser'
@@ -93,7 +96,7 @@ DATABASES = {
         'USER': 'postgres',#'bnvaumqh',  #'postgres',
         'PASSWORD':'1234',#'JjdYvivrrpd2lBYtehh5nLJmalKcpuW-',   # '1234',
         'HOST': 'localhost', #'raja.db.elephantsql.com',
-        #'PORT': 'local' #'5432'
+
     }
 }
 
@@ -147,8 +150,11 @@ AUTHENTICATION_BACKENDS = (
 
 )
 
+#Google Login Settings
 SITE_ID = 2 #why is it 2
 LOGIN_REDIRECT_URL = "/" #TODO create profile page
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
 
 if 'DATABASE_URL' in os.environ:
     import dj_database_url
