@@ -33,3 +33,4 @@ urlpatterns = [
     path('tutorregister/', tutor_register, name='tutorregister'),
     path('logout/',auth_views.LogoutView.as_view(template_name = 'find_a_qt/home.html'), name = 'logout'),
 ]
+

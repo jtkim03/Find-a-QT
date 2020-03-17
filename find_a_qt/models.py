@@ -1,5 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+
 FRESHMAN = 'FR'
 SOPHOMORE = 'SO'
 JUNIOR = 'JR'
@@ -36,6 +37,8 @@ MAJOR_CHOICES = [
     (MATHEMATICS, 'Mathematics'),
     (PHYSICS, 'Physics'),
 ]
+
+
 class Student(models.Model):
     year_in_school = models.CharField(
         max_length=2,
@@ -54,7 +57,7 @@ class Student(models.Model):
 
 
     def __str__(self):
-        return self.first_name
+        return self.last_name
 
 class Tutor(models.Model):
     year_in_school = models.CharField(
@@ -62,19 +65,19 @@ class Tutor(models.Model):
         choices=YEAR_IN_SCHOOL_CHOICES,
         default=FRESHMAN,
     )
-
     #tutor_img = models.ImageField(upload_to='templates/find_a_qt/images/') 
     major = models.CharField(
         max_length = 30,
         choices = MAJOR_CHOICES,
         default = UNDECIDED,
     )
+
     phone_number = PhoneNumberField(null=False, blank=False, unique=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     #bio = models.CharField(max_length=100, default='Hey! I am using Find a QT!')
 
-    number_tutored = 0 #This should be incremented everytime the tutor has tutored a new student
+    number_tutored =  models.IntegerField(default = 0) #This should be incremented everytime the tutor has tutored a new student
 
     def __str__(self):
-        return self.first_name
+        return self.last_name

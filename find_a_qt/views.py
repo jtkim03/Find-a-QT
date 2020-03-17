@@ -5,6 +5,7 @@ from django.contrib import messages
 from .forms import StudentRegistration, TutorRegistrationForm
 from django import forms
 from .models import Student
+from allauth.socialaccount.models import SocialAccount
 
 # Create your views here.
 def about_view(request):
@@ -13,9 +14,11 @@ def home(request):
     context = {}
     return render(request,'find_a_qt/home.html',context)
 
+
 def student_register(request):
     context = {}
     form = StudentRegistration(request.POST or None, request.FILES or None)
+
 
     if form.is_valid():
         form.save()
