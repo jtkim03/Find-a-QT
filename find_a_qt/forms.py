@@ -30,13 +30,14 @@ class StudentRegistration(ModelForm):
                        'aria-describedby' : 'add-btn',
                        'size': 1}
             ),
+            '''
             'major': forms.TextInput(
                 attrs={'class' : 'form-control',
                        'placeholder' : 'Enter Major',
                        'aria-label' : 'Student',
                        'aria-describedby' : 'add-btn'}
             ),
-
+            '''
             'phone_number': forms.TextInput(
              attrs={'class' : 'form-control',
                    'placeholder' : 'Enter Phone Number',
@@ -67,12 +68,14 @@ class TutorRegistrationForm(ModelForm):
                        'aria-describedby' : 'add-btn',
                        'size': 1}
             ),
+            '''
             'major': forms.TextInput(
                 attrs={'class' : 'form-control',
                        'placeholder' : 'Enter Major',
                        'aria-label' : 'Student',
                        'aria-describedby' : 'add-btn'}
             ),
+            '''
             'phone_number': forms.TextInput(
                 attrs={'class' : 'form-control',
                        'placeholder' : 'Enter Phone Number',

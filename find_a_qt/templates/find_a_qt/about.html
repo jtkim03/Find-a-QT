@@ -3,51 +3,61 @@
 {% providers_media_js %}
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <base href = "/">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static '/find_a_qt/style.css' %}">
-    <link rel=" tab icon" type="image/png" href="{% static 'find_a_qt/images/croppedlogo.ico' %}"/>
-    <title>Welcome to Find a QT</title>
-  </head>
-  <body>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <header class="site-header">
-        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-          <div class="container">
-            <a class="navbar-brand mr-4" href="/"> Find a QT</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarToggle">
-              <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" href="/">Home</a>
-                <a class="nav-item nav-link" href="/about">About Us</a>
-              </div>
-              <!-- Navbar Right Side -->
-              <div class="navbar-nav">
-                <a class="nav-item nav-link" href ="{% provider_login_url "google" %}">Login</a> &nbsp;
-                <a class="nav-item nav-link" href="/studentregister" style = "background-color: white; color: #5f788a ">Register As Student</a> &nbsp;
-                <a class="nav-item nav-link" href="/tutorregister" style = "background-color: white; color: #5f788a ">Register As Tutor</a>
-              </div>
-            </div>
+
+  <!-- Bootstrap CSS -->
+  <base href="/">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static '/find_a_qt/style.css' %}">
+  <link rel=" tab icon" type="image/png" href="{% static 'find_a_qt/images/croppedlogo.ico' %}" />
+  <title>Welcome to Find a QT</title>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+      <div class="container">
+        <a class="navbar-brand mr-4" href="/"> Find a QT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+          aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link" href="/">Home</a>
+            <a class="nav-item nav-link" href="/about">About</a>
           </div>
-        </nav>
-      </header>
-
-      <main role="main" class="container">
-        <div class="row">
-          <div class="col-md-8">
-            {% block content %}{% endblock %}
+          <!-- Navbar Right Side -->
+          <div class="navbar-nav">
+            {% if user.is_authenticated %}
+            <a class="nav-link disabled" href="#">Signed in as {{user.username}}</a>
+            <a class="nav-item nav-link" href="/logout " style="background-color: white; color: #5f788a ">Logout</a>
+            {%else%}
+            <a class="nav-item nav-link" href="{% provider_login_url "google" %}">Login</a>
+            <a class="nav-item nav-link" href="/studentregister "
+              style="background-color: white; color: #5f788a ">Register As Student</a> &nbsp;
+            <a class="nav-item nav-link" href="/tutorregister" style="background-color: white; color: #5f788a ">Register
+              As Tutor</a>
+            {%endif%}
           </div>
-          <div class="col-md-4">
-              <!--
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8">
+        {% block content %}{% endblock %}
+      </div>
+      <div class="col-md-4">
+        <!--
             <div class="content-section">
               <h3>Our Sidebar</h3>
               <p class='text-muted'>You can put any information here you'd like.
@@ -60,20 +70,29 @@
               </p>
             </div>
             -->
-          </div>
-        </div>
-      </main>
-    <div class="container">
-        <h1> <center>About <img src="{% static './find_a_qt/images/logo.png' %}" width="150" height="150" ></center></h1>
-            <div class="box_about" style="background: white; border: 50px solid white"><br>
-                <h6>Find a QT's inception was with a class project in 2020. The team noticed a gap between tutoring services and students
-                    at UVA. After further inspection, we realized that most UVA students in our sample didn't use the tutoring services offered by
-                    the university. Because of this, we decided to invest our time into this project and make it our project for the semester. </h6> <br><br>
-                <h6>Our primary goal is to connect students with tutors. The student simply creates an account, snaps a picture of the question
-                    and chooses its topic and our tutors get notified. After a tutor accepts the session, the student and tutor meet according to
-                    the details of the session. </h6>  <br><br>
-                <h6> With this service, the student only needs to pay for the amount of time required and not a cent more!</h6>
-            </div>
+      </div>
     </div>
-  </body>
+  </main>
+  <div class="container">
+    <h1>
+      <center>About <img src="{% static './find_a_qt/images/logo.png' %}" width="150" height="150"></center>
+    </h1>
+    <div class="box_about" style="background: white; border: 50px solid white"><br>
+      <h6>Find a QT's inception was with a class project in 2020. The team noticed a gap between tutoring services and
+        students
+        at UVA. After further inspection, we realized that most UVA students in our sample didn't use the tutoring
+        services offered by
+        the university. Because of this, we decided to invest our time into this project and make it our project for the
+        semester. </h6> <br><br>
+      <h6>Our primary goal is to connect students with tutors. The student simply creates an account, snaps a picture of
+        the question
+        and chooses its topic and our tutors get notified. After a tutor accepts the session, the student and tutor meet
+        according to
+        the details of the session. </h6> <br><br>
+      <h6> With this service, the student only needs to pay for the amount of time required and not a cent more!</h6>
+    </div>
+  </div>
+</body>
+
 </html>
+

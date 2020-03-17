@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 from .forms import StudentRegistration, TutorRegistrationForm
 from django import forms
 from .models import Student
@@ -22,6 +23,9 @@ def student_register(request):
     if form.is_valid():
         form.save()
         context['form'] = form
+        first_name = form.cleaned_data.get('first_name')
+        last_name = form.cleaned_data.get('last_name')
+        messages.success(request, f'Success! an account has been created for {first_name} {last_name}!')
         return render(request, 'find_a_qt/home.html', context)
 
     context['form'] = form
@@ -34,6 +38,9 @@ def tutor_register(request):
     if form.is_valid():
         form.save()
         context['form'] = form
+        first_name = form.cleaned_data.get('first_name')
+        last_name = form.cleaned_data.get('last_name')
+        messages.success(request, f'Success! an account has been created for {first_name} {last_name}!')
         return render(request, 'find_a_qt/home.html', context)
 
 

@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+
+
+
 ]
 
 #AUTH_USER_MODEL = 'users.CustomUser'
@@ -89,8 +92,7 @@ DATABASES = {
         'NAME': 'find-a-qt',#'bnvaumqh',  #'find-a-qt',
         'USER': 'postgres',#'bnvaumqh',  #'postgres',
         'PASSWORD':'1234',#'JjdYvivrrpd2lBYtehh5nLJmalKcpuW-',   # '1234',
-        'HOST': '127.0.0.1', #'raja.db.elephantsql.com',
-        'PORT': '5432',
+        'HOST': 'localhost', #'raja.db.elephantsql.com',
     }
 }
 
@@ -144,8 +146,12 @@ AUTHENTICATION_BACKENDS = (
 
 )
 
+#Google Login Settings
 SITE_ID = 2 #why is it 2
-LOGIN_REDIRECT_URL = "/studentregister" #TODO create profile page
+LOGIN_REDIRECT_URL = "/" #TODO create profile page
+#LOGIN_REDIRECT_URL = "/studentregister" #First Google login -> profile creation
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
 
 if 'DATABASE_URL' in os.environ:
     import dj_database_url
