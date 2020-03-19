@@ -8,7 +8,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 
-class StudentRegistration(ModelForm):
+class StudentRegistration(forms.ModelForm):
 
   # user =
 
@@ -48,7 +48,7 @@ class StudentRegistration(ModelForm):
 
 
 
-class TutorRegistrationForm(ModelForm):
+class TutorRegistrationForm(forms.ModelForm):
 
     class Meta:
         model = Tutor

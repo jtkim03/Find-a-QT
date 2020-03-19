@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 class UserRegisterForm(UserCreationForm):
-    email = forms.EmailField(required=False)
+    email = forms.EmailField() #May need to be required if we want to link it with google?
 
     class Meta:
         model = User #to affect this model

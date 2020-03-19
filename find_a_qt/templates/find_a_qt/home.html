@@ -21,7 +21,7 @@
 
 <body>
   <header class="site-header">
-    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+    <nav class="navbar navbar-expand-md navbar-dark bg-success fixed-top">
       <div class="container">
         <a class="navbar-brand mr-4" href="/"> Find a QT</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
@@ -40,7 +40,8 @@
             <a class="nav-item nav-link" href="/logout "
               style="background-color: white; color: #5f788a ">Logout</a>
             {%else%}
-            <a class="nav-item nav-link" href="{% provider_login_url "google" %}">Login</a>
+            <a class="nav-item nav-link" href= "/login">Login</a>
+            <a class="nav-item nav-link" href="{% provider_login_url "google" %}">Login With Google</a>
             <a class="nav-item nav-link" href="/studentregister "
               style="background-color: white; color: #5f788a ">Register As Student</a> &nbsp;
             <a class="nav-item nav-link" href="/tutorregister" style="background-color: white; color: #5f788a ">Register
@@ -76,7 +77,7 @@
       <center>Welcome to <img src="{% static './find_a_qt/images/logo.png' %}" width="150" height="150"></center>
     </h1>
 
-    <div class="row" style="background: white; border: 50px solid white"">
+    <div class="row" style="background: #FAFAFA; border: 50px solid #FAFAFA"">
         <div class=" col">
       <br>
       <center>
@@ -89,14 +90,14 @@
     </div>
     <div class="col">
       <center><img style="position: relative" src="{% static './find_a_qt/images/struggle.jpg' %}" width="400"
-          height="266"></center>
+          height="266" class="img-thumbnail"></center>
     </div>
   </div>
   <br>
-  <div class="row" style="background: white; border: 50px solid white">
+  <div class="row" style="background: #FAFAFA; border: 50px solid #FAFAFA">
     <div class="col">
       <center><img style="position: relative" src="{% static './find_a_qt/images/tutoring.png' %}" width="400"
-          height="266"></center>
+          height="266" class="img-thumbnail"></center>
     </div>
     <div class="col">
       <br>
