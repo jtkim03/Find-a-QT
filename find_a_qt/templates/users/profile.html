@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Profile</title>
-</head>
-<body>
-Welcome
-</body>
-</html>
+{%extends 'find_a_qt/base.html' %}
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+{% block content %}
+<h1> Welcome, {{user}}</h1>
+{% endblock %}
+
