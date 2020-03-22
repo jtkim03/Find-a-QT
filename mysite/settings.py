@@ -91,7 +91,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'find-a-qt',#'bnvaumqh',  #'find-a-qt',
         'USER': 'postgres',#'bnvaumqh',  #'postgres',
-        'PASSWORD':'1234',#'JjdYvivrrpd2lBYtehh5nLJmalKcpuW-',   # '1234',
+        'PASSWORD':'1234',#'JjdYvivrrpd2lBYtehh5nLJmalKcpuW-',
         'HOST': 'localhost', #'raja.db.elephantsql.com',
     }
 }
@@ -149,9 +149,11 @@ AUTHENTICATION_BACKENDS = (
 #Google Login Settings
 SITE_ID = 2 #why is it 2
 LOGIN_REDIRECT_URL = "/" #TODO create profile page
+LOGIN_URL = 'login'
 #LOGIN_REDIRECT_URL = "/studentregister" #First Google login -> profile creation
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
+
 
 if 'DATABASE_URL' in os.environ:
     import dj_database_url
