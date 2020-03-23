@@ -81,3 +81,19 @@ class Tutor(models.Model):
 
     def __str__(self):
         return self.last_name
+
+
+class Question(models.Model):
+    body = models.TextField()
+
+    topic = models.CharField(
+        max_length = 30,
+        choices = MAJOR_CHOICES,
+        default = UNDECIDED,
+    )
+
+    class_name = models.CharField(max_length=50, default = "")
+
+    #urgency
+    #picture
+    #topic??
