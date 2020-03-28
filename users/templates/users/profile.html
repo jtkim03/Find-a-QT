@@ -1,13 +1,40 @@
 {% extends "find_a_qt/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-   <div class="content-section">
-     <div class="media">
-       <img class="rounded-circle account-img" src="{{ user.profile.image.url}}">
-       <div class="media-body">
-         <p class="account-heading">{{user.username}}</p>
-       </div>
-     </div>
-     <!-- FORM HERE -->
-   </div>
+<div class="col-md-3 offset-md-1">
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <h3>Welcome, {{user.username}}</h3>
+      </div>
+
+      <ul class="list-unstyled components">
+        <li class = 'list-group-item list-group-item-success'>
+          <a href ="#" >Profile</a>
+        </li>
+        <li class = 'list-group-item list-group-item-success'>
+          <a href="#">Edit Profile</a>
+        </li>
+        <li class = 'list-group-item list-group-item-success'>
+          <a href="#">My Questions</a>
+        </li>
+        <li class = 'list-group-item list-group-item-success'>
+          <a href="#">Answer Questions</a>
+        </li>
+      </ul>
+
+    </nav>
+    <!-- Page Content -->
+  </div>
+</div>
+<div class="content-section">
+  <div class="media">
+    <img class="rounded-circle account-img" src="{{ user.profile.image.url}}">
+    <div class="media-body">
+      <p class="account-heading">Welcome, {{user.username}}</p>
+    </div>
+  </div>
+  <!-- FORM HERE -->
+</div>
 {% endblock %}
