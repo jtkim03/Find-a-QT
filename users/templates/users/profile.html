@@ -3,9 +3,9 @@
 {% block content %}
    <div class="content-section">
      <div class="media">
-       <img class="rounded-circle account-img" src="{{ user.socialaccount_set.all.0.get_avatar_url }}">
+       <img class="rounded-circle account-img" src="{{ user.profile.image.url}}">
        <div class="media-body">
-         <p class="account-heading">{{ user.get_full_name }}</p>
+         <p class="account-heading">{{user.username}}</p>
        </div>
      </div>
      <!-- FORM HERE -->
