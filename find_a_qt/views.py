@@ -17,11 +17,15 @@ def home(request):
     return render(request,'find_a_qt/home.html',context)
 
 def Q_view(request):
-    return render(request,'find_a_qt/questions.html')
+    context = {
+        'questions': Question.objects.all()
+    }
+    return render(request,'find_a_qt/questions.html', context)
 
 class QuestionListView(ListView):
     model = Question
     template_name = 'find_a_qt/questions.html' 
+    context_object_name = 'questions'
 
 
 

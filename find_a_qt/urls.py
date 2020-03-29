@@ -9,6 +9,6 @@ urlpatterns = [
     path('about', views.about_view, name = 'about'),
     path('studentregister', views.student_register, name = 'studentregister'),
     path('tutorregister', views.tutor_register, name = 'tutorregister'),
-    #path('ViewQuestions', QuestionListView.as_view(), name = 'viewquestions'),
-    path('questions', views.Q_view, name = 'questions'),
+    path('questions', QuestionListView.as_view(), name = 'viewquestions'),
+    #path('questions', views.Q_view, name = 'questions'),
 ]

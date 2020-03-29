@@ -5,6 +5,12 @@
 
 {% block content %}
 
-
+{% for question in questions %}
+<article class="media content-section">
+  <div class="media-body">
+        <p class="article-content">{{ question.body }}</p>
+  </div>
+</article>
+{% endfor %}
 
 {% endblock %}

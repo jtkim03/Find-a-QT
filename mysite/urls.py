@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
-from find_a_qt.views import home, student_register, tutor_register
+from find_a_qt.views import home, student_register, tutor_register, Q_view, QuestionListView
 from django.views.generic import TemplateView
 from users import views as user_views
 from django.conf import settings
@@ -36,6 +36,7 @@ urlpatterns = [
     #path('addstudent/', add_student, name='addstudent')
     path('tutorregister/', tutor_register, name='tutorregister'),
     path('profile/', user_views.profile, name='profile'),
+    path('questions/', QuestionListView.as_view(), name='viewquestions'),
 ]
 
 if settings.DEBUG:
