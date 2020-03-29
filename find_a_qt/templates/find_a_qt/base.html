@@ -59,21 +59,19 @@
       <div class="col-md-8">
 
         {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">
-          {{ message }}
-        </div>
-        {% endfor %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+              {{ message }}
+            </div>
+          {% endfor %}
         {% endif %}
-
+        {% block content %}{% endblock %}
       </div>
       <div class="col-md-4">
       </div>
     </div>
   </main>
-  <div class="row d-flex">
-    {% block content %}{% endblock %}
-  </div>
+
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
