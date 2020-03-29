@@ -4,8 +4,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import StudentRegistration, TutorRegistrationForm
 from django import forms
-from .models import Student
+from .models import Student, Question
 from allauth.socialaccount.models import SocialAccount
+
+from django.views.generic import ListView, DetailView, CreateView
 
 # Create your views here.
 def about_view(request):
@@ -13,6 +15,23 @@ def about_view(request):
 def home(request):
     context = {}
     return render(request,'find_a_qt/home.html',context)
+
+class QuestionListView(ListView):
+    model = Question
+    template_name = 'find_a_qt/questions.html' 
+    context_object_name = 'questions'
+
+class QuestionDetailView(DetailView):
+    model = Question
+
+class QuestionCreateView(CreateView):
+    model = Question
+    fields = ['body', 'topic', 'class_name', 'author_name']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
 
 
 def student_register(request):

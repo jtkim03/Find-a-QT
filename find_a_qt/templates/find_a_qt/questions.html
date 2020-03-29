@@ -1,0 +1,21 @@
+{%extends 'find_a_qt/base.html' %}
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+{% block content %}
+
+{% for question in questions %}
+<article class="media content-section">
+    <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="#">{{ question.author_name }}</a>
+      </div>
+      <h2><a class="article-title" href="#">{{ question.class_name }}</a></h2>
+      <p class="article-content">{{ question.body }}</p>
+    </div>
+  </article>
+{% endfor %}
+
+{% endblock %}
