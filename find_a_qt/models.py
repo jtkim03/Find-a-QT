@@ -94,14 +94,14 @@ class Question(models.Model):
     )
 
     class_name = models.CharField(max_length=50, default = "")
-    author_name = models.CharField(max_length=50, default = "")
+    author_name = models.CharField(max_length=50, default = "Anonymous")
 
     #date?
     #urgency
     #picture
     #topic??
 
-    #def get_absolute_url(self):
-     #   return reverse('questions-detail', kwargs={'pk': self.pk})
+    def get_absolute_url(self):
+        return reverse('faqt-home')
 
 
