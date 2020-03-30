@@ -94,7 +94,7 @@ class Question(models.Model):
     )
 
     class_name = models.CharField(max_length=50, default = "")
-    author_name = models.CharField(max_length=50, default = "")
+    author_name = models.CharField(max_length=50, default = "Anonymous")
 
     #date?
     #urgency
@@ -103,8 +103,11 @@ class Question(models.Model):
 
     def get_absolute_url(self):
         return reverse('faqt-home')
+<<<<<<< HEAD
 
     def __str__(self):
         return self.body
+=======
+>>>>>>> 07085f5a6c38d4a145ff94d1efbeb193143ce449
 
 
