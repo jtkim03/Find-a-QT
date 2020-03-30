@@ -25,30 +25,21 @@
     <!-- Page Content -->
   </div>
 </div>
-<div class="content-section" align="justify">
+<div class="content-section">
   <div class="media">
     <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-    <div class="media-body">
-      <p class="account-heading">Welcome, <br>{{user.first_name}} {{user.last_name}}</p>
-    </div>
+     <div class="media-body">
+       <p class="account-heading">{{ user.first_name }} {{ user.last_name }}</p>
+     </div>
   </div>
-    <fieldset class="form-group" >
-        <legend class="border-bottom mb-4">Profile Info</legend>
-
-        <h5><u>Username</u></h5>
-        <p><b>{{ user }}</b></p>
-        <h5><u>First Name</u></h5>
-        <p><b>{{ user.first_name }}</b></p>
-        <h5><u>Last Name</u></h5>
-        <p><b>{{ user.last_name }}</b></p>
-        <h5><u>Email</u></h5>
-        <p><b>{{ user.email }}</b></p>
-
-
-    </fieldset>
-    <form action="/profile/edit/">
-      <input class="btn btn-outline-info" type="submit" value="Update Profile" />
-    </form>
-    <br>
+  <!-- FORM HERE -->
+  <form method="post">
+    {% csrf_token %}
+    {{ u_form|crispy }}
+    {{ p_form|crispy }}
+    <button class="btn btn-outline-info" type="submit">Update</button>
+  </form>
+  <br>
 </div>
+
 {% endblock %}
