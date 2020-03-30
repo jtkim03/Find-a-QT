@@ -10,5 +10,6 @@ urlpatterns = [
     path('studentregister', views.student_register, name = 'studentregister'),
     path('tutorregister', views.tutor_register, name = 'tutorregister'),
     path('questions', QuestionListView.as_view(), name = 'viewquestions'),
+    path('questions/new/', QuestionCreateView.as_view(), name='createquestions'),
     path('questions/<int:pk>/', QuestionDetailView.as_view(), name = 'viewquestions-detail'),
 ]
