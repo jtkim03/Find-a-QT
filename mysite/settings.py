@@ -43,8 +43,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 
-
-
 ]
 
 #AUTH_USER_MODEL = 'users.CustomUser'

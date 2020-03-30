@@ -101,7 +101,10 @@ class Question(models.Model):
     #picture
     #topic??
 
-    #def get_absolute_url(self):
-     #   return reverse('questions-detail', kwargs={'pk': self.pk})
+    def get_absolute_url(self):
+        return reverse('faqt-home')
+
+    def __str__(self):
+        return self.body
 
 
