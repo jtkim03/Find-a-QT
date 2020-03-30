@@ -45,4 +45,4 @@ class QuestionStrTestCase(TestCase):
     def test_str(self):
         """Str returns the correct value (first and last name)"""
         Q1 = Question.objects.get(body="What is life?")
-        self.assertEqual(str(Q1), 'What is Life?')
+        self.assertEqual(str(Q1), 'What is life?')
