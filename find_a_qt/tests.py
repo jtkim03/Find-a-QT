@@ -59,4 +59,4 @@ class ProfileStrTestCase(TestCase):
 
     def test_str(self):
         test_user = Profile.objects.get(user='JohnD')
-        self.assertEqual("JohnD's Profile", test_user.__str__)
+        self.assertEqual(str(test_user), "JohnD's Profile")
