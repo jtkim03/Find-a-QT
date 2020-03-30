@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Tutor, Student, Question
+from .models import Question
 from users.models import Profile
 from django.contrib.auth.models import User
 
@@ -52,11 +52,10 @@ class QuestionStrTestCase(TestCase):
 
 class ProfileStrTestCase(TestCase):
     def setUp(self):
-        test_user = User
-        test_user.username = 'JohnD'
-        test_user.email = 'Grandma@grandparent.com'
-        Profile.objects.create(user=test_user)
+        self.test_user = User.objects.create_user('JohnD', 'johnd@mail.com', 'johnpassword')
+
 
     def test_str(self):
-        test_user = Profile.objects.get(user='JohnD')
-        self.assertEqual(str(test_user), "JohnD's Profile")
+        test_user = self.test_user
+        test_profile = Profile.objects.get(user=test_user)
+        self.assertEqual(str(test_profile), "JohnD's Profile")
