@@ -6,10 +6,17 @@ from .models import Profile
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField() #May need to be required if we want to link it with google?
+    first_name = forms.CharField(max_length=30)
+    last_name = forms.CharField(max_length=30)
 
     class Meta:
         model = User #to affect this model
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username',
+                  'first_name',
+                  'last_name',
+                  'email',
+                  'password1',
+                  'password2']
 
 
 class UserUpdateForm(forms.ModelForm):
@@ -17,7 +24,7 @@ class UserUpdateForm(forms.ModelForm):
 
     class Meta:
         model = User #to affect this model
-        fields = ['username', 'email']
+        fields = ['username', 'first_name', 'last_name', 'email']
 
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
