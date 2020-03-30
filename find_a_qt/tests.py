@@ -15,6 +15,7 @@ from .models import Tutor, Student, Question
 
 
 #Tests whether the thing returned by the Student model under str is equal to what it should be
+'''
 class StudentStrTestCase(TestCase):
     def setUp(self):
         Student.objects.create(first_name="Jane", last_name="Doe", phone_number = '+14134839124', major = 'CS', year_in_school = 'SR')
@@ -23,7 +24,7 @@ class StudentStrTestCase(TestCase):
         """Str returns the correct value (first and last name)"""
         Jane = Student.objects.get(first_name="Jane")
         self.assertEqual(str(Jane), 'Jane Doe')
-
+'''
 
 #Tests whether creating a new user with an already existing phone number creates an error
 # class StudentClashNumber(TestCase):
