@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -23,7 +23,7 @@ class QuestionListView(ListView):
 
 class QuestionDetailView(DetailView):
     model = Question
-    template_name = 'find_a_qt/question_detail.html' 
+    template_name = 'find_a_qt/questions.html' 
 
 # class QuestionCreateView(CreateView):
 #     model = Question
@@ -48,8 +48,9 @@ def question_post(request):
         urgency = form.cleaned_data.get('urgency')
         session_date = form.cleaned_data.get('session_date')
         image = form.cleaned_data.get('image')
-        messages.success(request, f'Success!')
-        return render(request, 'find_a_qt/question_form.html', context)
+        messages.success(request, 'Success!')
+        #return render(request, 'find_a_qt/question_detail.html', context)
+        return HttpResponseRedirect('/questions')
 
     context['form'] = form
     return render(request, 'find_a_qt/question_form.html', context)

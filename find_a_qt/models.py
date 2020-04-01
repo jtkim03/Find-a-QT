@@ -113,7 +113,7 @@ class Question(models.Model):
         choices=URGENT_CHOICES,
         default=WHENEVER,
     )
-    image = models.ImageField(upload_to='question_images/',) #blank = True) 
+    image = models.ImageField(upload_to='question_images/', blank = True) 
     #topic??
 
     def get_absolute_url(self):
