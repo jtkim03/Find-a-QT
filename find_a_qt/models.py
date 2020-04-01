@@ -105,8 +105,8 @@ class Question(models.Model):
     )
 
     class_name = models.CharField(max_length=50, default = "")
-    #author_name = models.CharField(max_length=50, default = "Anonymous")
-    author_name = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE,)
+    author_name = models.CharField(max_length=50, default = "Anonymous")
+    #author_name = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE,)
     session_date = models.DateField(blank = False, null = False, default = timezone.now())
     urgency = models.CharField(
         max_length=2,
