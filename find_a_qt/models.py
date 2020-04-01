@@ -3,6 +3,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 from django.urls import reverse
 import datetime
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 FRESHMAN = 'FR'
 SOPHOMORE = 'SO'
@@ -104,7 +105,8 @@ class Question(models.Model):
     )
 
     class_name = models.CharField(max_length=50, default = "")
-    author_name = models.CharField(max_length=50, default = "Anonymous")
+    #author_name = models.CharField(max_length=50, default = "Anonymous")
+    author_name = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE,)
     session_date = models.DateField(blank = False, null = False, default = timezone.now())
     urgency = models.CharField(
         max_length=2,
