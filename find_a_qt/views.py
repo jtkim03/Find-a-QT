@@ -26,7 +26,7 @@ class QuestionDetailView(DetailView):
 
 class QuestionCreateView(CreateView):
     model = Question
-    fields = ['body', 'topic', 'class_name', 'author_name']
+    fields = ['body', 'topic', 'class_name', 'author_name', 'urgency', 'session_date', 'image']
 
     def form_valid(self, form):
         form.instance.author = self.request.user

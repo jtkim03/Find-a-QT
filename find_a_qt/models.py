@@ -1,6 +1,8 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django.urls import reverse
+import datetime
+from django.utils import timezone
 
 FRESHMAN = 'FR'
 SOPHOMORE = 'SO'
@@ -37,6 +39,14 @@ MAJOR_CHOICES = [
     (INFORMATION_TECHNOLOGY, 'Information Technology'),
     (MATHEMATICS, 'Mathematics'),
     (PHYSICS, 'Physics'),
+]
+NOW = 'NW'
+LATER = 'LT'
+WHENEVER = 'WH'
+URGENT_CHOICES = [
+    (NOW, 'Due immediately'),
+    (LATER, 'Due within a week'),
+    (WHENEVER, 'No rush'),
 ]
 
 
@@ -95,10 +105,13 @@ class Question(models.Model):
 
     class_name = models.CharField(max_length=50, default = "")
     author_name = models.CharField(max_length=50, default = "Anonymous")
-
-    #date?
-    #urgency
-    #picture
+    session_date = models.DateField(blank = False, null = False, default = timezone.now())
+    urgency = models.CharField(
+        max_length=2,
+        choices=URGENT_CHOICES,
+        default=WHENEVER,
+    )
+    image = models.ImageField(upload_to='question_images/', blank = True) 
     #topic??
 
     def get_absolute_url(self):
@@ -106,5 +119,8 @@ class Question(models.Model):
     
     def __str__(self):
         return self.body
+
+    def get_queryset(self):
+        return Project.objects
 
 
