@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -47,8 +47,9 @@ def question_post(request):
         urgency = form.cleaned_data.get('urgency')
         session_date = form.cleaned_data.get('session_date')
         image = form.cleaned_data.get('image')
-        messages.success(request, f'Success!')
-        return render(request, 'find_a_qt/question_form.html', context)
+        messages.success(request, f'Success! Created question {body}!')
+        #return render(request, 'find_a_qt/question_form.html', context)
+        return HttpResponseRedirect('/questions/')
 
     context['form'] = form
     return render(request, 'find_a_qt/question_form.html', context)
