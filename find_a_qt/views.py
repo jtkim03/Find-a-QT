@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from .forms import StudentRegistration, TutorRegistrationForm
+from .forms import StudentRegistration, TutorRegistrationForm, QuestionForm
 from django import forms
 from .models import Student, Question
 from allauth.socialaccount.models import SocialAccount
@@ -24,14 +24,34 @@ class QuestionListView(ListView):
 class QuestionDetailView(DetailView):
     model = Question
 
-class QuestionCreateView(CreateView):
-    model = Question
-    fields = ['body', 'topic', 'class_name', 'author_name', 'urgency', 'session_date', 'image']
+# class QuestionCreateView(CreateView):
+#     model = Question
+#     fields = ['body', 'topic', 'class_name', 'author_name', 'urgency', 'session_date', 'image']
 
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+#     def form_valid(self, form):
+#         form.instance.author = self.request.user
+#         return super().form_valid(form)
 
+def question_post(request):
+    context = {}
+    form = QuestionForm(request.POST or None, request.FILES or None)
+
+
+    if form.is_valid():
+        form.save()
+        context['form'] = form
+        topic = form.cleaned_data.get('topic')
+        body = form.cleaned_data.get('body')
+        class_name = form.cleaned_data.get('class_name')
+        author_name = form.cleaned_data.get('author_name')
+        urgency = form.cleaned_data.get('urgency')
+        session_date = form.cleaned_data.get('session_date')
+        image = form.cleaned_data.get('image')
+        messages.success(request, f'Success!')
+        return render(request, 'find_a_qt/question_form.html', context)
+
+    context['form'] = form
+    return render(request, 'find_a_qt/question_form.html', context)
 
 
 def student_register(request):

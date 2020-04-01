@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.db import models
 from django.forms import ModelForm
-from .models import Student, Tutor
+from .models import Student, Tutor, Question
 from phonenumber_field.modelfields import PhoneNumberField
 
 
@@ -90,3 +90,7 @@ class TutorRegistrationForm(forms.ModelForm):
             # )
         }
 
+class QuestionForm(forms.ModelForm):
+    class Meta:
+        model = Question
+        fields = ('body', 'topic', 'class_name', 'author_name', 'urgency', 'session_date', 'image')
