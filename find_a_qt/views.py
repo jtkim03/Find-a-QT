@@ -49,8 +49,8 @@ def question_post(request):
         session_date = form.cleaned_data.get('session_date')
         image = form.cleaned_data.get('image')
         messages.success(request, 'Success!')
-        #return render(request, 'find_a_qt/question_detail.html', context)
-        return HttpResponseRedirect('/questions')
+        return render(request, 'find_a_qt/question_detail.html', context)
+        #return HttpResponseRedirect('/questions')
 
     context['form'] = form
     return render(request, 'find_a_qt/question_form.html', context)
