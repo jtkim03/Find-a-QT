@@ -23,6 +23,7 @@ class QuestionListView(ListView):
 
 class QuestionDetailView(DetailView):
     model = Question
+    template_name = 'find_a_qt/question_detail.html' 
 
 # class QuestionCreateView(CreateView):
 #     model = Question
