@@ -1,0 +1,31 @@
+{%extends 'find_a_qt/base.html' %}
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+{% block content %}
+
+<article class="media content-section">
+  <div class="container">
+    <div class="row">
+      <div class="media-left">
+        {% if object.image %}
+          <img src="{{object.image.url}}" class="media-object" style="width:999px" >
+        {% endif %}
+      </div>
+    </div>
+  
+    <br>
+    <div class="row">
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" href="#">{{ object.author_name }}</a>
+    </div>
+
+    <h2 class="article-title">{{ object.class_name }}</h2>
+    <p class="article-content">{{ object.body }}</p>
+  </div>
+</div>
+  </article>
+
+{% endblock %}
