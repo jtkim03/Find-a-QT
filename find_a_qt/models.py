@@ -1,7 +1,7 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django.urls import reverse
-import datetime
+from datetime import datetime
 from django.utils import timezone
 from django.contrib.auth.models import User
 
@@ -41,9 +41,9 @@ MAJOR_CHOICES = [
     (MATHEMATICS, 'Mathematics'),
     (PHYSICS, 'Physics'),
 ]
-NOW = 'NW'
-LATER = 'LT'
-WHENEVER = 'WH'
+NOW = 'Due immediately'
+LATER = 'Due within a week'
+WHENEVER = 'No rush'
 URGENT_CHOICES = [
     (NOW, 'Due immediately'),
     (LATER, 'Due within a week'),
@@ -107,9 +107,12 @@ class Question(models.Model):
     class_name = models.CharField(max_length=50, default = "")
     author_name = models.CharField(max_length=50, default = "Anonymous")
     #author_name = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE,)
-    session_date = models.DateField(blank = False, null = False, default = timezone.now())
+    session_date = models.DateField(blank = False, null = False, default = datetime.now)
+    session_time =  models.TimeField( default = datetime.now)
+    time_submission = models.DateTimeField(auto_now=True,)
+
     urgency = models.CharField(
-        max_length=2,
+        max_length=30,
         choices=URGENT_CHOICES,
         default=WHENEVER,
     )
@@ -125,4 +128,8 @@ class Question(models.Model):
     def get_queryset(self):
         return Project.objects
 
-
+class Comment(models.Model):
+    post = models.ForeignKey(Question, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE,)
+    text = models.TextField(max_length = 500)
+    time_submission = models.DateTimeField(auto_now=True,)

@@ -4,7 +4,13 @@
 {% providers_media_js %}
 
 {% block content %}
-
+<!-- So far we aren't doing session requests. Add that -->
+<!-- Post stuff starts from here -->
+<div class="container">
+  <div class="row">
+    <h4>Post</h4>
+    </div>
+  <div class="row">
 <article class="media content-section">
   <div class="container">
     <div class="row">
@@ -19,13 +25,33 @@
     <div class="row">
   <div class="media-body">
     <div class="article-metadata">
-      <a class="mr-2" href="#">{{ object.author_name }}</a>
+      <a class="mr-2" href="#">{{ object.author_name.upper }}</a>
+      <br>
+      <small class="article-content">{{ object.time_submission }} EST</small>
+      
     </div>
 
     <h2 class="article-title">{{ object.class_name }}</h2>
     <p class="article-content">{{ object.body }}</p>
+    <p class="article-content">Urgency: {{ object.urgency }}</p>
+    <p class="article-content">Date and time of session: {{ object.session_date }} {{ object.session_time }}</p>
   </div>
+  <br>
 </div>
-  </article>
+</article>
+</div>
+<!-- Comments start from here -->
+<div class = 'row'>
+  <h6>Comments</h6>
+</div>
+<div class = "row">
+  <article class="media content-section">
+    <div class = "container">
+      Hello
 
+    </div>
+  </article>
+</article>
+</div>
+</div>
 {% endblock %}
