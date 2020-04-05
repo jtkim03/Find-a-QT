@@ -7,6 +7,8 @@ from django import forms
 from .models import Student, Question
 from allauth.socialaccount.models import SocialAccount
 
+from django.db.models import Q
+
 from django.views.generic import ListView, DetailView, CreateView
 
 # Create your views here.
@@ -18,7 +20,7 @@ def home(request):
 
 class QuestionListView(ListView):
     model = Question
-    template_name = 'find_a_qt/questions.html' 
+    template_name = 'find_a_qt/questions.html'
     context_object_name = 'questions'
 
 class QuestionDetailView(DetailView):
@@ -87,3 +89,5 @@ def tutor_register(request):
     context['form'] = form
 
     return render(request, 'users/tutorregister.html', context)
+
+

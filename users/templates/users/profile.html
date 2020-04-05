@@ -33,6 +33,9 @@
     </div>
   </div>
     <fieldset class="form-group" >
+        <legend class="border-bottom mb-4">Bio</legend>
+        <p><b>{{ user.profile.bio }}</b></p>
+
         <legend class="border-bottom mb-4">Profile Info</legend>
 
         <h5><u>Username</u></h5>
@@ -43,7 +46,6 @@
         <p><b>{{ user.last_name }}</b></p>
         <h5><u>Email</u></h5>
         <p><b>{{ user.email }}</b></p>
-
 
     </fieldset>
     <form action="/profile/edit/">
