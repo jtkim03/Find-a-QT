@@ -127,6 +127,8 @@ class Question(models.Model):
 
     def get_queryset(self):
         return Project.objects
+        
+
 
 class Answer(models.Model):
     post = models.ForeignKey(Question, on_delete=models.CASCADE)

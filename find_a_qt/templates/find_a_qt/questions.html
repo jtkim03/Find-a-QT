@@ -4,16 +4,20 @@
 {% providers_media_js %}
 
 {% block content %}
+<div class = "row col-md-12 mx-auto ml-3">
+<h2 class = mx-auto>Current Questions</h2>
+</div>
 
 {% for question in questions %}
 <a href="questions/{{question.id}}">
-<article class="media content-section mx-auto">
+<article class="media content-section mx-3">
   <object data="media/default.png" type="image/png" width="100" height="100" border-radius=20%>
     <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
   </object>
     <div class="media-body">
       <div class="article-metadata">
         <a class="mr-2" href="questions/{{question.id}}">{{ question.author_name }}</a>
+        <small class="article-content">{{ question.time_submission }} EST</small>
       </div>
       <h2><a class="article-title" href="questions/{{question.id}}">{{ question.class_name }}</a></h2>
       <p class="article-content">{{ question.body }}</p>

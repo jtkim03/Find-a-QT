@@ -94,6 +94,5 @@ class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
         fields = ('body', 'topic', 'class_name', 'author_name', 'urgency', 'session_date', 'session_time', 'image',)
-        
 
 #class
