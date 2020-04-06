@@ -36,6 +36,7 @@ urlpatterns = [
     #path('addstudent/', add_student, name='addstudent')
     path('tutorregister/', tutor_register, name='tutorregister'),
     path('profile/', user_views.view_profile, name='profile'),
+    url(r'^profile/(?P<pk>\d+)/$', user_views.view_profile, name='profile_with_pk'),
     path('profile/edit/', user_views.edit_profile, name='edit_profile'),
 
     path('questions/', QuestionListView.as_view(), name='viewquestions'),

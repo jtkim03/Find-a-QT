@@ -11,9 +11,9 @@ def home_view(request):
     return render(request,'find_a_qt/home.html')
 
 
-def student_register_view(request):
+"""def student_register_view(request):
     return render(request, 'users/studentregister.html')
 
 def tutor_register_view(request):
-    return render(request, 'user/tutorregister.html')
+    return render(request, 'user/tutorregister.html')"""
 
