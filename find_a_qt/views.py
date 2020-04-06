@@ -38,7 +38,8 @@ def question_post(request):
 
 
     if form.is_valid():
-        form.save()
+        instance = form.save(commit=False)
+        instance.author = request.user
         context['form'] = form
         topic = form.cleaned_data.get('topic')
         body = form.cleaned_data.get('body')
@@ -47,6 +48,7 @@ def question_post(request):
         urgency = form.cleaned_data.get('urgency')
         session_date = form.cleaned_data.get('session_date')
         image = form.cleaned_data.get('image')
+        instance.save()
         messages.success(request, f'Success! Created question {body}!')
         #return render(request, 'find_a_qt/question_form.html', context)
         return HttpResponseRedirect('/questions/')
