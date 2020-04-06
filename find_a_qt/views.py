@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from .forms import StudentRegistration, TutorRegistrationForm, QuestionForm
+from .forms import StudentRegistration, TutorRegistrationForm, QuestionForm, AnswerForm
 from django import forms
-from .models import Student, Question
+from .models import Student, Question, Answer
 from allauth.socialaccount.models import SocialAccount
 
 from django.db.models import Q
@@ -34,6 +34,23 @@ class QuestionDetailView(DetailView):
 #         form.instance.author = self.request.user
 #         return super().form_valid(form)
 
+def answer_post(request):
+    context = {}
+    form = AnswerForm(request.POST or None, request.FILES or None)
+
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.user = request.user
+        context['form'] = form
+        text = form.cleaned_data.get('text')
+        upvotes = form.cleaned_data.get('upvotes')
+        instance.save()
+        messages.success(request, f'Success! Created answer!')
+        return HttpResponseRedirect('/questions/')
+
+    context['form'] = form
+    return render(request, 'find_a_qt/question_form.html', context)
+ 
 def question_post(request):
     context = {}
     form = QuestionForm(request.POST or None, request.FILES or None)
