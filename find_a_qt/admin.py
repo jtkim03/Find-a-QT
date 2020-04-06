@@ -1,9 +1,10 @@
 from django.contrib import admin
-from .models import Student, Tutor, Question
+from .models import Student, Tutor, Question, Answer
 
 admin.site.register(Tutor)
 admin.site.register(Student)
 admin.site.register(Question)
+admin.site.register(Answer)
 
 # class QuestionAdmin(admin.ModelAdmin):
 #     fields = ['body', 'topic', 'class_name', 'author_name', 'urgency', 'session_date', 'image']
