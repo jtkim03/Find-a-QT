@@ -2,10 +2,12 @@ from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from .forms import StudentRegistration, TutorRegistrationForm, QuestionForm, AnswerForm
+from .forms import StudentRegistration, TutorRegistrationForm, QuestionForm, AnswerForm, RoomForm
 from django import forms
 from .models import Student, Question, Answer
 from allauth.socialaccount.models import SocialAccount
+
+from chat.models import Room
 
 from django.db.models import Q
 
@@ -50,6 +52,24 @@ def answer_post(request):
 
     context['form'] = form
     return render(request, 'find_a_qt/question_form.html', context)
+
+def room_post(request):
+    context = {}
+    form = RoomForm(request.POST or None, request.FILES or None)
+
+    if form.is_valid():
+        form.save()
+        context['form'] = form
+        #fields = ('name', 'description', 'slug')
+        #name = form.cleaned_data.get('name')
+        #dscription = form.cleaned_data.get('dscription')
+        messages.success(request, f'Success! Created Chat Room!')
+        return HttpResponseRedirect('/chat/')
+
+    context['form'] = form
+    return render(request, 'find_a_qt/room_form.html', context)
+
+
  
 def question_post(request):
     context = {}

@@ -17,11 +17,13 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include, re_path
-from find_a_qt.views import home, student_register, tutor_register, QuestionListView, QuestionDetailView, question_post, answer_post
+from find_a_qt.views import home, student_register, tutor_register, QuestionListView, QuestionDetailView, question_post, answer_post, room_post
 from django.views.generic import TemplateView
 from users import views as user_views
 from django.conf import settings
 from django.conf.urls.static import static
+
+from chat.models import Room
 
 
 urlpatterns = [
@@ -45,6 +47,7 @@ urlpatterns = [
     path('questions/<int:pk>/', QuestionDetailView.as_view(), name = 'viewquestions-detail'),
 
     path('answer/new/', answer_post, name='createqs'),
+    path('chat/new/', room_post, name='createroom'),
 
     path('reset-password/', auth_views.PasswordResetView.as_view(), name='reset_password'),
     path('reset-password/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
