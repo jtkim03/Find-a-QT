@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include, re_path
-from find_a_qt.views import home, student_register, tutor_register, QuestionListView, QuestionDetailView, question_post
+from find_a_qt.views import home, student_register, tutor_register, QuestionListView, QuestionDetailView, question_post, answer_post
 from django.views.generic import TemplateView
 from users import views as user_views
 from django.conf import settings
@@ -37,11 +37,14 @@ urlpatterns = [
     #path('addstudent/', add_student, name='addstudent')
     path('tutorregister/', tutor_register, name='tutorregister'),
     path('profile/', user_views.view_profile, name='profile'),
+    url(r'^profile/(?P<pk>\d+)/$', user_views.view_profile, name='profile_with_pk'),
     path('profile/edit/', user_views.edit_profile, name='edit_profile'),
 
     path('questions/', QuestionListView.as_view(), name='viewquestions'),
     path('questions/new/', question_post, name='createquestions'),
     path('questions/<int:pk>/', QuestionDetailView.as_view(), name = 'viewquestions-detail'),
+
+    path('answer/new/', answer_post, name='createqs'),
 
     path('reset-password/', auth_views.PasswordResetView.as_view(), name='reset_password'),
     path('reset-password/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),

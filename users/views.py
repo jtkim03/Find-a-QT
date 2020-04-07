@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm #not use
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 
 def register(request):
@@ -19,9 +20,15 @@ def register(request):
 
 
 @login_required
-def view_profile(request):
-    args = {'user': request.user}
-    return render(request, 'users/profile.html')
+def view_profile(request, pk=None):
+
+    if pk:
+        user = User.objects.get(pk=pk)
+    else:
+        user = request.user
+    other_users = User.objects.all()
+    args = {'user': user, 'users': other_users}
+    return render(request, 'users/profile.html', args)
 
 
 @login_required

@@ -29,10 +29,15 @@
   <div class="media">
     <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
     <div class="media-body">
-      <p class="account-heading">Welcome, <br>{{user.first_name}} {{user.last_name}}</p>
+      <h2 class="account-heading">{{user.first_name}} {{user.last_name}}</h2>
+      <p><i>{{ user.profile.year_in_school }}, {{ user.profile.major }}</i></p>
     </div>
+
   </div>
     <fieldset class="form-group" >
+        <legend class="border-bottom mb-4">Bio</legend>
+        <p><b>{{ user.profile.bio }}</b></p>
+
         <legend class="border-bottom mb-4">Profile Info</legend>
 
         <h5><u>Username</u></h5>
@@ -44,11 +49,21 @@
         <h5><u>Email</u></h5>
         <p><b>{{ user.email }}</b></p>
 
-
     </fieldset>
-    <form action="/profile/edit/">
-      <input class="btn btn-outline-info" type="submit" value="Update Profile" />
-    </form>
+    {% if user == request.user %}
+      <form action="/profile/edit/">
+        <input class="btn btn-outline-info" type="submit" value="Update Profile" />
+      </form>
+    {% endif %}
     <br>
+</div>
+<div class="container">
+  <h2>Other Users</h2>
+  {% for user in users %}
+    <a href="{% url 'profile_with_pk' pk=user.pk %}">
+      <h6>{{ user.username }}</h6>
+    </a>
+
+  {% endfor %}
 </div>
 {% endblock %}
