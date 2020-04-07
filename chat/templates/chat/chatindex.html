@@ -1,0 +1,57 @@
+{% extends 'find_a_qt/base.html' %}
+{% load static %}
+{%block content%}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css" />
+    <style>
+        .rounded-edges {
+            border-radius: 0.25rem;
+        }
+    </style>
+    <title>FInd a QT Chat Rooms</title>
+</head>
+
+<body>
+    <div class="col-md-12">
+        <section class="hero is-success">
+            <div class="hero-body has-text-centered">
+                <div class="container">
+                    <h1 class="title is-2">
+                        Chat with a QT
+                    </h1>
+                    <h2 class="subtitle is-5">
+                        Have a general question that you want a quick answer to?
+                        <br /> Join one of the rooms below and ask fellow students or a QT
+                    </h2>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                <div class="columns">
+                    {% for room in rooms %}
+                    <div class="column">
+                        <div class="card rounded-edges">
+                            <div class="card-content">
+                                <p class="title is-4">{{room.name}}</p>
+                                <div class="content">
+                                    <p>
+                                        {{room.description}}
+                                    </p>
+                                    <a href="/rooms/{{room.slug}}" class="button">Join Room</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+    </div>
+    </section>
+</body>
+
+</html>
+{%endblock content%}

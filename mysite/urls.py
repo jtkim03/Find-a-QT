@@ -27,6 +27,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('',TemplateView.as_view(template_name = 'find_a_qt/home.html'), name='faqt-home'), #TODO Merge this login template with homepage
     path('admin/', admin.site.urls),
+    url(r'^', include('chat.urls')),
     path('accounts/', include('allauth.urls')),
     path('about/', TemplateView.as_view(template_name = 'find_a_qt/about.html')),
     path('register/', user_views.register, name='register'),
