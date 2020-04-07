@@ -25,6 +25,11 @@ class QuestionListView(ListView):
     template_name = 'find_a_qt/questions.html'
     context_object_name = 'questions'
 
+class AnswerListView(ListView):
+    model = Answer
+    template_name = 'find_a_qt/answers.html'
+    context_object_name = 'answers'
+
 class QuestionDetailView(DetailView):
     model = Question
 
