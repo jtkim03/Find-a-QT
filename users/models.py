@@ -4,6 +4,7 @@ from find_a_qt.models import Student,Tutor
 from PIL import Image
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+import statistics as stats
 
 class Profile(models.Model):
     UNDECIDED = 'Undecided'
@@ -53,6 +54,12 @@ class Profile(models.Model):
                                       choices=YEAR_IN_SCHOOL_CHOICES,
                                       default=FRESHMAN,
                                       blank=True)
+
+    ratings_list = []
+    if not ratings_list:
+        rating = 'N/A'
+    else:
+        rating = stats.mean(ratings_list)
 
     def __str__(self):
         return f"{self.user.username}'s Profile"
