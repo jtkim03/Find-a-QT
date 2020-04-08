@@ -5,6 +5,7 @@ from django.db import models
 from django.forms import ModelForm
 from .models import Student, Tutor, Question, Answer
 from phonenumber_field.modelfields import PhoneNumberField
+from chat.models import Room
 
 
 
@@ -99,5 +100,10 @@ class AnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
         fields = ('post', 'text', 'upvotes')
+
+class RoomForm(forms.ModelForm):
+    class Meta:
+        model = Room
+        fields = ('name', 'description', 'slug')
 
 #class

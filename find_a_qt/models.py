@@ -137,5 +137,6 @@ class Answer(models.Model):
     text = models.TextField(max_length = 500)
     time_submission = models.DateTimeField(auto_now=True,)
     upvotes = models.IntegerField(default=0)
+    #questionid
     def __str__(self):
         return self.text

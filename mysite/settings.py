@@ -6,7 +6,7 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
-
+from dotenv import load_dotenv
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -28,6 +28,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'find-a-qt2.herokuapp.com', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'chat.apps.ChatConfig',
     'find_a_qt.apps.FindAQtConfig',
     'users.apps.UsersConfig',
     'django.contrib.admin',
@@ -87,7 +88,8 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'find_a_qt',#'bnvaumqh',
+        'NAME': 'find_a_qt',    #'bnvaumqh',
+        #'NAME': 'FAQ',
         'USER': 'postgres',#'bnvaumqh',  #'postgres',
         'PASSWORD':'1234',#'JjdYvivrrpd2lBYtehh5nLJmalKcpuW-',
         'HOST': 'localhost', #'raja.db.elephantsql.com',
@@ -169,3 +171,11 @@ MEDIA_URL = '/media/'
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = '1025'
 
+#TWILIO
+dotenv_path = os.path.join(BASE_DIR, '.env')
+load_dotenv(dotenv_path)
+
+TWILIO_ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID', None)
+TWILIO_API_KEY = os.environ.get('TWILIO_API_KEY', None)
+TWILIO_API_SECRET = os.environ.get('TWILIO_API_SECRET', None)
+TWILIO_CHAT_SERVICE_SID = os.environ.get('TWILIO_CHAT_SERVICE_SID', None)

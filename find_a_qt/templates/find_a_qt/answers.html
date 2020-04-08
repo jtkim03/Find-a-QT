@@ -1,0 +1,23 @@
+{%extends 'find_a_qt/base.html' %}
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+{% block content %}
+<div class = "row col-md-12 mx-auto ml-3">
+<h2 class = mx-auto>Current Answers</h2>
+</div>
+
+{% for answer in answers %}
+
+<article class="media content-section mx-3">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="questions/{{question.id}}">{{ answer.post }}</a>
+      </div>
+      <h2><a class="article-title" href="questions/{{question.id}}">{{ answer.user }}</a></h2>
+      <p class="article-content">{{ answer.text }}</p>
+  </article>
+{% endfor %}
+
+{% endblock %}

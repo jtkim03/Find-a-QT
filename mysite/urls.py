@@ -17,16 +17,19 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include, re_path
-from find_a_qt.views import home, student_register, tutor_register, QuestionListView, QuestionDetailView, question_post, answer_post
+from find_a_qt.views import home, student_register, tutor_register, QuestionListView, QuestionDetailView, question_post, answer_post, room_post, AnswerListView
 from django.views.generic import TemplateView
 from users import views as user_views
 from django.conf import settings
 from django.conf.urls.static import static
 
+from chat.models import Room
+
 
 urlpatterns = [
     path('',TemplateView.as_view(template_name = 'find_a_qt/home.html'), name='faqt-home'), #TODO Merge this login template with homepage
     path('admin/', admin.site.urls),
+    url(r'^', include('chat.urls')),
     path('accounts/', include('allauth.urls')),
     path('about/', TemplateView.as_view(template_name = 'find_a_qt/about.html')),
     path('register/', user_views.register, name='register'),
@@ -40,10 +43,12 @@ urlpatterns = [
     path('profile/edit/', user_views.edit_profile, name='edit_profile'),
 
     path('questions/', QuestionListView.as_view(), name='viewquestions'),
+    path('answers/', AnswerListView.as_view(), name='viewanswers'),
     path('questions/new/', question_post, name='createquestions'),
     path('questions/<int:pk>/', QuestionDetailView.as_view(), name = 'viewquestions-detail'),
 
     path('answer/new/', answer_post, name='createqs'),
+    path('chat/new/', room_post, name='createroom'),
 
     path('reset-password/', auth_views.PasswordResetView.as_view(), name='reset_password'),
     path('reset-password/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
