@@ -3,15 +3,13 @@ from .models import Room
 from django.conf import settings
 from django.http import JsonResponse
 
-from faker import Faker
 from twilio.jwt.access_token import AccessToken
 from twilio.jwt.access_token.grants import ChatGrant
 
 
-fake = Faker()
 
 def token(request):
-    identity = request.GET.get('identity', fake.user_name())
+    identity = request.GET.get('identity', request.user.username)
     device_id = request.GET.get('device', 'default')  # unique device ID
 
     account_sid = settings.TWILIO_ACCOUNT_SID
