@@ -8,48 +8,40 @@
 <!-- Post stuff starts from here -->
 <div class="container">
   <div class="row">
-    <h4>Post</h4>
-    </div>
-  <div class="row">
-<article class="media content-section">
-  <div class="container">
-    <div class="row">
-      <div class="media-left">
-        {% if object.image %}
-          <img src="{{object.image.url}}" class="media-object" style="width:999px" >
-        {% endif %}
-      </div>
-    </div>
-  
-    <br>
-    <div class="row">
-  <div class="media-body">
-    <div class="article-metadata">
-      <a class="mr-2" href="#">{{ object.author_name.upper }}</a>
-      <br>
-      <small class="article-content">{{ object.time_submission }} EST</small>
-      
-    </div>
+    <article class="media content-section col-md-12">
+      <div class="container">
+        <div class="row">
+          <div class="media-left">
+            {% if object.image %}
+            <img src="{{object.image.url}}" class="media-object" style="width:999px">
+            {% endif %}
+          </div>
+        </div>
 
-    <h2 class="article-title">{{ object.class_name }}</h2>
-    <p class="article-content">{{ object.body }}</p>
-    <p class="article-content"><b>Urgency: </b> {{ object.urgency }}</p>
-    <p class="article-content"><b>Date and time of session: </b> {{ object.session_date }} {{ object.session_time }}</p>
+        <br>
+        <div class="row">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ object.author_name.upper }}</a>
+              <br>
+              <small class="article-content">{{ object.time_submission }} EST</small>
+
+            </div>
+
+            <h2 class="article-title">{{ object.class_name }}</h2>
+            <p class="article-content">{{ object.body }}</p>
+            <p class="article-content"><b>Urgency: </b> {{ object.urgency }}</p>
+            <p class="article-content"><b>Preferred date and time of session: </b> {{ object.session_date }},{{ object.session_time }}</p>
+          </div>
+          <br>
+        </div>
+    </article>
   </div>
-  <br>
-</div>
-</article>
-</div>
-<!-- Comments start from here -->
-<div class = 'row'>
-  <a class="mr-2" href="answers"> View Answers </a>
-  <a class="mr-2" href="answer/new"> Answer this Question </a>
-  <hr class = "my-4">
-</div>
-<div class = "row">
-  <article class="media content-section">
-  </article>
-</article>
-</div>
+  <!-- Comments start from here -->
+  <div class='row'>
+    <a class="mr-2" href="answers"> View Answers </a>
+    <a class="mr-2" href="answer/new"> Answer this Question </a>
+    <hr class="my-4">
+  </div>
 </div>
 {% endblock %}

@@ -47,12 +47,12 @@ def answer_post(request):
 
     if form.is_valid():
         instance = form.save(commit=False)
-        instance.user = request.user
+        instance.author_name = request.user.username
         context['form'] = form
         text = form.cleaned_data.get('text')
         upvotes = form.cleaned_data.get('upvotes')
         instance.save()
-        messages.success(request, f'Success! Created answer!')
+        messages.success(request, f'Success! Answer posted.')
         return HttpResponseRedirect('/questions/')
 
     context['form'] = form
