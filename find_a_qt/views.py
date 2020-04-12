@@ -58,7 +58,7 @@ def question_post(request):
 
     if form.is_valid():
         instance = form.save(commit=False)
-        instance.author = request.user
+        instance.author_name = request.user.username
         context['form'] = form
         topic = form.cleaned_data.get('topic')
         body = form.cleaned_data.get('body')
