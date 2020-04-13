@@ -94,7 +94,7 @@ class TutorRegistrationForm(forms.ModelForm):
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
-        fields = ('body', 'topic', 'class_name', 'author_name', 'urgency', 'session_date', 'session_time', 'image',)
+        fields = ('body', 'topic', 'class_name', 'urgency', 'session_date', 'session_time', 'image',)
 
 class AnswerForm(forms.ModelForm):
     class Meta:

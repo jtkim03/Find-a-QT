@@ -9,15 +9,20 @@
 </div>
 
 {% for answer in answers %}
-
-<article class="media content-section mx-3">
+<div class="container">
+  <div class="row">
+<article class="media content-section col-md-12">
     <div class="media-body">
       <div class="article-metadata">
-        <a class="mr-2" href="questions/{{question.id}}">{{ answer.post }}</a>
+        <h4>
+        <a class="mr-2" href="questions/{{question.id}}">{{ answer.author_name }}</a>
+        <small class="article-content">Upvotes: {{answer.upvotes}} </small>
+        <h4>
       </div>
-      <h2><a class="article-title" href="questions/{{question.id}}">{{ answer.user }}</a></h2>
       <p class="article-content">{{ answer.text }}</p>
   </article>
+  </div>
+  </div>
 {% endfor %}
 
 {% endblock %}
