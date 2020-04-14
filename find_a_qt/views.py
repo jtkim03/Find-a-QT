@@ -134,4 +134,13 @@ def tutor_register(request):
 
     return render(request, 'users/tutorregister.html', context)
 
+def user_history(request):
+    history = Question.objects.filter(author_name=request.user).values()
+    return render(request,'find_a_qt/user_questions.html',{'history':history})
+
+# def question_answers(request):
+#     answers = Answer.objects.filter(author_name=request.user).values()
+#     return render(request,'find_a_qt/user_questions.html',{'history':history})
+
+
 
