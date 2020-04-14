@@ -5,10 +5,11 @@
 
 {% block content %}
 <div class = "row col-md-12 mx-auto ml-3">
-<h2 class = mx-auto>Current Questions</h2>
+<h2 class = mx-auto>Questions you have asked</h2>
 </div>
+<br>
 
-{% for question in questions %}
+{% for question in history %}
 <a href="questions/{{question.id}}">
 <article class="media content-section mx-3">
   <object data="media/default.png" type="image/png" width="100" height="100" border-radius=20%>

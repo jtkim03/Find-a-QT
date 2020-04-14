@@ -1,0 +1,30 @@
+{%extends 'find_a_qt/base.html' %}
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+{% block content %}
+<div class = "row col-md-12 mx-auto ml-3">
+    <h1 class = mx-auto>Questions</h2>
+</div>
+<div class="mx-auto">
+    <div class="wrapper">
+        <center>
+        <ul class="list-unstyled components">
+            <li class = 'list-group-item list-group-item-success'>
+            <a href ="/my-questions/" >My Questions</a>
+            </li>
+            <li class = 'list-group-item list-group-item-success'>
+            <a href="/questions/new">Ask a Question</a>
+            </li>
+            <li class = 'list-group-item list-group-item-success'>
+            <a href="/questions">Answer Questions</a>
+            </li>
+            <li class = 'list-group-item list-group-item-success'>
+                <a href="/questions/search">Search Questions</a>
+            </li>
+        </ul>
+    </center>
+    </div>
+</div>
+{%endblock%}
