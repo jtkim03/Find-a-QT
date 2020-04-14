@@ -1,0 +1,27 @@
+{% extends 'find_a_qt/base.html' %}
+{% load static %}
+{%block content%}
+<div class="container">
+    <h1>
+        <center>
+            Search For a Quesion
+            <img src="{% static 'find_a_qt/images/croppedlogo.png' %}" width=80px height=80px>
+            <form role="Search" action = "/s/">
+                <div class="form-group">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search for a Question by Topic"
+                        aria-label="Search" name = 'k'>
+                </div>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <p></p>
+
+            <label for="linkButton">Search By: </label>
+            <button class="btn btn-primary" type="submit" id="linkButton">Course</button>
+            <button class="btn btn-primary" type="submit">User</button>
+            <button class="btn btn-primary" type="submit">Lecture</button>
+            <button class="btn btn-primary" type="submit">Time</button>
+            <button class="btn btn-primary" type="submit">School</button>
+        </center>
+    </h1>
+</div>
+{%endblock%}
