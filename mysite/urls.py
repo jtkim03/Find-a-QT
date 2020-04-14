@@ -20,6 +20,7 @@ from django.urls import path, include, re_path
 from find_a_qt.views import home, student_register, tutor_register, QuestionListView, QuestionDetailView, question_post, answer_post, room_post, AnswerListView, user_history
 from django.views.generic import TemplateView
 from users import views as user_views
+from find_a_qt import views as find_a_qt_views
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -42,11 +43,14 @@ urlpatterns = [
     url(r'^profile/(?P<pk>\d+)/$', user_views.view_profile, name='profile_with_pk'),
     path('profile/edit/', user_views.edit_profile, name='edit_profile'),
     url(r'^profile/(?P<username>\w+)/$', user_views.profile_page, name='public_profile'),
+    
     path('questions/', QuestionListView.as_view(), name='viewquestions'),
     path('answers/', AnswerListView.as_view(), name='viewanswers'),
     path('questions/new/', question_post, name='createquestions'),
     path('questions/<int:pk>/', QuestionDetailView.as_view(), name = 'viewquestions-detail'),
     path('choose_question', TemplateView.as_view(template_name = 'find_a_qt/choose_question.html')),
+    path('questions/search/', TemplateView.as_view(template_name = 'find_a_qt/search_question.html'), name = 'search'),
+    path('s/', find_a_qt_views.search_view, name = 'search'),
     path('answer/new/', answer_post, name='createqs'),
     path('chat/new/', room_post, name='createroom'),
 

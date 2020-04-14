@@ -1,8 +1,8 @@
 from django.urls import path
 
 from . import views
-from django.contrib.staticfiles.URLs import staticfiles_urlpatterns
-from .views import QuestionListView, QuestionDetailView, QuestionCreateView
+#from django.contrib.staticfiles.URLs import staticfiles_urlpatterns
+from .views import QuestionListView, QuestionDetailView, QuestionCreateView,search_view
 
 urlpatterns = [
     path('', views.home_view, name='index'),
@@ -12,4 +12,5 @@ urlpatterns = [
     path('questions', QuestionListView.as_view(), name = 'viewquestions'),
     path('questions/new/', QuestionCreateView.as_view(), name='createquestions'),
     path('questions/<int:pk>/', QuestionDetailView.as_view(), name = 'viewquestions-detail'),
+    path('questions/search/', views.search_view, name = 'search'),
 ]
