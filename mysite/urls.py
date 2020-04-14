@@ -46,7 +46,7 @@ urlpatterns = [
     path('answers/', AnswerListView.as_view(), name='viewanswers'),
     path('questions/new/', question_post, name='createquestions'),
     path('questions/<int:pk>/', QuestionDetailView.as_view(), name = 'viewquestions-detail'),
-
+    path('choose_question', TemplateView.as_view(template_name = 'find_a_qt/choose_question.html')),
     path('answer/new/', answer_post, name='createqs'),
     path('chat/new/', room_post, name='createroom'),
 
