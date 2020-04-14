@@ -26,7 +26,7 @@ def search_view(request):
     except:
         k = None
     if k:
-        questions = Question.objects.filter(topic__icontains= k)
+        questions = Question.objects.filter(class_name__icontains= k)
         context = {'query': k, 'questions':questions}
         template = 'find_a_qt/search_results.html'
     else:
