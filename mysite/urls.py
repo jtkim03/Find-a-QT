@@ -41,7 +41,7 @@ urlpatterns = [
     path('profile/', user_views.view_profile, name='profile'),
     url(r'^profile/(?P<pk>\d+)/$', user_views.view_profile, name='profile_with_pk'),
     path('profile/edit/', user_views.edit_profile, name='edit_profile'),
-
+    url(r'^profile/(?P<username>\w+)/$', user_views.profile_page, name='public_profile'),
     path('questions/', QuestionListView.as_view(), name='viewquestions'),
     path('answers/', AnswerListView.as_view(), name='viewanswers'),
     path('questions/new/', question_post, name='createquestions'),

@@ -56,7 +56,7 @@ def answer_post(request):
         return HttpResponseRedirect('/questions/')
 
     context['form'] = form
-    return render(request, 'find_a_qt/question_form.html', context)
+    return render(request, 'find_a_qt/answer_form.html', context)
 
 def room_post(request):
     context = {}
