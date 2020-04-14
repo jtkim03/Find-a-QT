@@ -20,6 +20,20 @@ def home(request):
     context = {}
     return render(request,'find_a_qt/home.html',context)
 
+def search_view(request):
+    try:
+        k = request.GET.get('k')
+    except:
+        k = None
+    if k:
+        questions = Question.objects.filter(topic__icontains= k)
+        context = {'query': k, 'questions':questions}
+        template = 'find_a_qt/search_results.html'
+    else:
+        template = 'find_a_qt/search_question.html'
+    return render(request,template,context)
+
+
 class QuestionListView(ListView):
     model = Question
     template_name = 'find_a_qt/questions.html'
