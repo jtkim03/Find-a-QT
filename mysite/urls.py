@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include, re_path
-from find_a_qt.views import home, student_register, tutor_register, QuestionListView, QuestionDetailView, question_post, answer_post, room_post, AnswerListView, user_history
+from find_a_qt.views import home, student_register, tutor_register, QuestionListView, QuestionDetailView, question_post, answer_post, room_post, AnswerListView, user_history, question_answers
 from django.views.generic import TemplateView
 from users import views as user_views
 from django.conf import settings
@@ -56,6 +56,8 @@ urlpatterns = [
             auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('reset-password/complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('my-questions/', user_history, name='user_question'),
+    # path('answer-question/',question_answers,name='answer_question')
+    path('answers/<int:pk>/',question_answers,name='answer_question')
 ]
 
 if settings.DEBUG:

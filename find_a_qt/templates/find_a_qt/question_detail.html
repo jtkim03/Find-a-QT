@@ -22,7 +22,7 @@
         <div class="row">
           <div class="media-body">
             <div class="article-metadata">
-              <a class="mr-2" href="profile/{{question.author_name}}">{{ object.author_name.upper }}</a>
+              <a class="mr-2" href="#">{{ object.author_name.upper }}</a>
               <br>
               <small class="article-content">{{ object.time_submission }} EST</small>
 
@@ -39,7 +39,7 @@
   </div>
   <!-- Comments start from here -->
   <div class='row'>
-    <a class="mr-2" href="answers"> View Answers </a>
+    <a class="mr-2" href="answers/{{object.id}}/"> View Answers </a>
     <a class="mr-2" href="answer/new"> Answer this Question </a>
     <hr class="my-4">
   </div>

@@ -1,3 +1,5 @@
+<!-- Displaying answers for a specific question -->
+
 {%extends 'find_a_qt/base.html' %}
 {% load static %}
 {% load socialaccount %}
@@ -5,10 +7,15 @@
 
 {% block content %}
 <div class = "row col-md-12 mx-auto ml-3">
-<h2 class = mx-auto>Current Answers</h2>
+<h2 class = mx-auto>Answers for 
+  {% for question in questions %}
+  <a href = '/questions/{{question.id}}'>{{question.body}} </a></h2>
+  {% endfor %}
 </div>
+<br>
 
-{% for answer in answers %}
+{% for answer in history %}
+
 <div class="container">
   <div class="row">
 <article class="media content-section col-md-12">

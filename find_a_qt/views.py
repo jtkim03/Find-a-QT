@@ -138,9 +138,11 @@ def user_history(request):
     history = Question.objects.filter(author_name=request.user).values()
     return render(request,'find_a_qt/user_questions.html',{'history':history})
 
-# def question_answers(request):
-#     answers = Answer.objects.filter(author_name=request.user).values()
-#     return render(request,'find_a_qt/user_questions.html',{'history':history})
+def question_answers(request,pk):
+    questions = Question.objects.filter(id=pk).values()
+    history = Answer.objects.filter(post_id=pk).values()
+    # history = Answer.objects.all().values()
+    return render(request,'find_a_qt/answer_question.html',{'history':history, 'questions':questions})
 
 
 
