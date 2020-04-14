@@ -55,11 +55,6 @@ class Profile(models.Model):
                                       default=FRESHMAN,
                                       blank=True)
 
-    ratings_list = []
-    if not ratings_list:
-        rating = 'N/A'
-    else:
-        rating = stats.mean(ratings_list)
 
     def __str__(self):
         return f"{self.user.username}'s Profile"
@@ -71,3 +66,24 @@ class Profile(models.Model):
             output_size = (300,300)
             img.thumbnail(output_size)
             img.save(self.image.path)
+
+
+class Like(models.Model):
+    ''' like  user '''
+
+    users = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    profiles = models.ForeignKey(Profile, on_delete=models.CASCADE, default=None)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+"""class DisLike(models.Model):
+    ''' Dislike  user '''
+
+    profile = models.OneToOneField(Profile, related_name="dis_likes", on_delete=models.CASCADE)
+    users = models.ManyToManyField(User, related_name='requirement_comment_dis_likes')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.profile.name)[:30]"""

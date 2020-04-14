@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm #not use
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, HttpResponseRedirect
 from django.contrib.auth.models import User
+from .models import Profile, Like
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def register(request):
@@ -57,3 +59,25 @@ def edit_profile(request):
 def profile_page(request, username):
     user = get_object_or_404(User, username=username)
     return render(request, 'users/public_profile.html', {'profile_user': user})
+
+"""@login_required
+def like(request, profile_id):
+    new_like, created = Like.objects.get_or_create(user=request.user, profile_id=profile_id)
+    if (request.GET.get('mybtn')):
+        if created:
+            # the user already liked this picture before
+            return render(request, 'users/profile.html/', {})
+        else:
+            # oll korrekt
+            new_like = Like.objects.create(users=request.user, profiles=profile_id)
+            return render(request, 'users/profile.html/', {'new_like': new_like})"""
+
+
+
+
+
+
+
+
+
+

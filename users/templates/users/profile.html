@@ -23,18 +23,33 @@
           <a href="/chat/new">Create a Chat Room</a>
         </li>
       </ul>
-
     </nav>
+    <br>
+    <div class="container">
+      <h2><u>Other Users</u></h2>
+      {% for user in users %}
+      {% if user != request.user %}
+      <a href="{% url 'profile_with_pk' pk=user.pk %}">
+        <h6>{{ user.username }}</h6>
+      </a>
+      {% endif %}
+      {% endfor %}
+    </div>
     <!-- Page Content -->
   </div>
 </div>
+
 <div class="content-section" align="justify">
   <div class="media">
     <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
     <div class="media-body">
       <h2 class="account-heading">{{user.first_name}} {{user.last_name}}</h2>
       <p><i>{{ user.profile.year_in_school }}, {{ user.profile.major }}</i></p>
-      <p>Rating:  {{ user.profile.rating }}</p>
+      <form action="{% url 'profile_with_pk' pk=user.pk %}" method="get">
+        <input class="btn btn-outline-info" type="submit" value="Like this User" name="mybtn"/> {{ user.profile.like_set.all.count }}
+      </form>
+      <br>
+      <input class="btn btn-outline-info" type="submit" value="Dislike this User" />
     </div>
 
   </div>
@@ -61,13 +76,7 @@
     {% endif %}
     <br>
 </div>
-<div class="container">
-  <h2>Other Users</h2>
-  {% for user in users %}
-    <a href="{% url 'profile_with_pk' pk=user.pk %}">
-      <h6>{{ user.username }}</h6>
-    </a>
 
-  {% endfor %}
-</div>
+
+
 {% endblock %}
