@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm #not use
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 
 
@@ -52,3 +53,7 @@ def edit_profile(request):
 
     return render(request, 'users/edit_profile.html', context)
 
+@login_required
+def profile_page(request, username):
+    user = get_object_or_404(User, username=username)
+    return render(request, 'users/public_profile.html', {'profile_user': user})
