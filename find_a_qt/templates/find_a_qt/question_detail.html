@@ -39,9 +39,30 @@
   </div>
   <!-- Comments start from here -->
   <div class='row'>
-    <a class="mr-2" href="answers"> View Answers </a>
     <a class="mr-2" href="answer/new"> Answer this Question </a>
     <hr class="my-4">
   </div>
+  <body>
+    <h1>Answers</h1>
+    {% for answer in object.answer.all %}
+    <div class="container">
+      <div class="row">
+    <article class="media content-section col-md-12">
+        <div class="media-body">  
+          {% if answer.image %}
+            <img src="{{answer.image.url}}" class="media-object" style="width:999px">
+            {% endif %}
+          <div class="article-metadata">
+            <h4>
+            <a class="mr-2" href="questions/{{question.id}}">{{ answer.author_name }}</a>
+            <small class="article-content">Upvotes: {{answer.upvotes}} </small>
+            <h4>
+          </div>
+          <p class="article-content">{{ answer.text }}</p>
+      </article>
+      </div>
+      </div>
+    {% endfor %}
+    </body>
 </div>
 {% endblock %}

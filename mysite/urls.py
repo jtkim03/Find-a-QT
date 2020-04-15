@@ -17,14 +17,14 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include, re_path
-from find_a_qt.views import home, student_register, tutor_register, QuestionListView, QuestionDetailView, question_post, answer_post, room_post, AnswerListView
+from find_a_qt.views import home, student_register, tutor_register, QuestionListView, QuestionDetailView, question_post, answer_post, room_post, AnswerListView, UserQuestionView
 from django.views.generic import TemplateView
 from users import views as user_views
 from django.conf import settings
 from django.conf.urls.static import static
 
 from chat.models import Room
-
+from find_a_qt.models import Question
 
 urlpatterns = [
     path('',TemplateView.as_view(template_name = 'find_a_qt/home.html'), name='faqt-home'), #TODO Merge this login template with homepage
@@ -41,6 +41,7 @@ urlpatterns = [
     path('profile/', user_views.view_profile, name='profile'),
     url(r'^profile/(?P<pk>\d+)/$', user_views.view_profile, name='profile_with_pk'),
     path('profile/edit/', user_views.edit_profile, name='edit_profile'),
+    path('profile/MyQuestions/', UserQuestionView.as_view(), name='myqs'),
 
     path('questions/', QuestionListView.as_view(), name='viewquestions'),
     path('answers/', AnswerListView.as_view(), name='viewanswers'),
