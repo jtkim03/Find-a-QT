@@ -33,6 +33,22 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="space">
+                  <br>
+
+                  {% if profile_user != request.user %}
+                    <a href="{% url 'like' username=profile_user.username %}">
+                      <button type="button" class="btn btn-dark">
+                        Like ({{ num_likes }})
+                      </button>
+                    </a>
+                    <br>
+                    <br>
+                    <a href="{% url 'dislike' username=profile_user.username %}">
+                      <button type="button" class="btn btn-dark">
+                        Dislike ({{ num_dislikes }})
+                      </button>
+                    </a>
+                  {% endif %}
                 </div>
             </div>
             <div class="col-md-8">
@@ -74,6 +90,6 @@
                 </div>
             </div>
         </div>
-    </form>           
+    </form>
 </div>
 {%endblock%}

@@ -5,7 +5,7 @@ from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, HttpResponseRedirect
 from django.contrib.auth.models import User
-from .models import Profile, Like
+from .models import Profile, Like, Dislike
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
@@ -31,11 +31,10 @@ def view_profile(request, pk=None):
         user = request.user
     other_users = User.objects.all()
 
-    num_likes = Like.get_num_likes(user)
-
-
-
-    args = {'user': user, 'users': other_users, 'num_likes': num_likes}
+    args = {
+        'user': user,
+        'users': other_users,
+    }
     return render(request, 'users/profile.html', args)
 
 
@@ -63,12 +62,30 @@ def edit_profile(request):
 @login_required
 def profile_page(request, username):
     user = get_object_or_404(User, username=username)
-    return render(request, 'users/public_profile.html', {'profile_user': user})
+
+    num_likes = Like.get_num_likes(user)
+    num_dislikes = Dislike.get_num_dislikes(user)
+
+    return render(request, 'users/public_profile.html', {'profile_user': user,
+                                                         'num_likes': num_likes,
+                                                         'num_dislikes': num_dislikes})
 
 @login_required
-def like(request, pk):
-    Like.give_like(request.user, User.objects.get(pk=pk))
-    return redirect('faqt-home')
+def like(request, username):
+    if request.user != User.objects.get(username=username):
+        Like.give_like(request.user, User.objects.get(username=username))
+        return redirect('/profile/' + str(username))
+    else:
+        return redirect('profile')
+
+@login_required
+def dislike(request, username):
+
+    if request.user != User.objects.get(username=username):
+        Dislike.give_dislike(request.user, User.objects.get(username=username))
+        return redirect('/profile/' + str(username))
+    else:
+        return redirect('profile')
 
 
 

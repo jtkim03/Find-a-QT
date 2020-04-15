@@ -1,6 +1,7 @@
 {% extends "find_a_qt/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+
 <div class="col-md-3 offset-md-1">
   <div class="wrapper">
     <!-- Sidebar -->
@@ -25,16 +26,6 @@
       </ul>
     </nav>
     <br>
-    <div class="container">
-      <h2><u>Other Users</u></h2>
-      {% for user in users %}
-      {% if user != request.user %}
-      <a href="{% url 'profile_with_pk' pk=user.pk %}">
-        <h6>{{ user.username }}</h6>
-      </a>
-      {% endif %}
-      {% endfor %}
-    </div>
     <!-- Page Content -->
   </div>
 </div>
@@ -45,9 +36,6 @@
     <div class="media-body">
       <h2 class="account-heading">{{user.first_name}} {{user.last_name}}</h2>
       <p><i>{{ user.profile.year_in_school }}, {{ user.profile.major }}</i></p>
-      <a href="{% url 'like' pk=user.pk %}">
-        <button type="button" class="btn btn-outline-info">Like ({{ num_likes }})</button>
-      </a>
 
     </div>
 

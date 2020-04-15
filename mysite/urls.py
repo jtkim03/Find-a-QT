@@ -66,7 +66,8 @@ urlpatterns = [
     path('my-questions/', user_history, name='user_question'),
     # path('answer-question/',question_answers,name='answer_question'),
     path('answers/<int:pk>/',question_answers,name='answer_question'),
-    url(r'^like/(?P<pk>\d+)/$', user_views.like, name='like'),
+    url(r'^like/(?P<username>\w+)/$', user_views.like, name='like'),
+    url(r'^dislike/(?P<username>\w+)/$', user_views.dislike, name='dislike'),
 ]
 
 if settings.DEBUG:

@@ -69,7 +69,7 @@ class Profile(models.Model):
 
 class Like(models.Model):
     users = models.ManyToManyField(User, related_name='like_set')
-    current_user = models.ForeignKey(User, related_name='owner', on_delete=models.CASCADE, null=True)
+    current_user = models.ForeignKey(User, related_name='like_owner', on_delete=models.CASCADE, null=True)
 
     @classmethod
     def give_like(cls, current_user, new_like):
@@ -77,7 +77,10 @@ class Like(models.Model):
             current_user=current_user
         )
         like.users.add(new_like)
-
+        dislike, created = Dislike.objects.get_or_create(
+            current_user=current_user
+        )
+        dislike.users.remove(new_like)
 
     @classmethod
     def get_num_likes(cls, current_user):
@@ -86,4 +89,41 @@ class Like(models.Model):
             for j in i.users.all():
                 if current_user == j:
                     sum += 1
+
         return sum
+
+
+    def __str__(self):
+        return str(self.current_user) \
+               + " is liked by " \
+               + str(self.get_num_likes(self.current_user)) + " users!"
+
+class Dislike(models.Model):
+    users = models.ManyToManyField(User, related_name='dislike_set')
+    current_user = models.ForeignKey(User, related_name='dislike_owner', on_delete=models.CASCADE, null=True)
+
+    @classmethod
+    def give_dislike(cls, current_user, new_dislike):
+        dislike, created = cls.objects.get_or_create(
+            current_user=current_user
+        )
+        dislike.users.add(new_dislike)
+        like, created = Like.objects.get_or_create(
+            current_user=current_user
+        )
+        like.users.remove(new_dislike)
+
+
+    @classmethod
+    def get_num_dislikes(cls, current_user):
+        sum = 0
+        for i in cls.objects.all():
+            for j in i.users.all():
+                if current_user == j:
+                    sum += 1
+        return sum
+
+    def __str__(self):
+        return str(self.current_user) \
+               + " is disliked by " \
+               + str(self.get_num_dislikes(self.current_user)) + " users!"
