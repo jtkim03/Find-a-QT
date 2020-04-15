@@ -38,14 +38,15 @@
                   {% if profile_user != request.user %}
                     <a href="{% url 'like' username=profile_user.username %}">
                       <button type="button" class="btn btn-dark">
-                        Like ({{ num_likes }})
+                        <i class="fas fa-thumbs-up"></i>
+                          &nbsp; {{ num_likes }}
                       </button>
                     </a>
-                    <br>
-                    <br>
+                    &ensp;
                     <a href="{% url 'dislike' username=profile_user.username %}">
                       <button type="button" class="btn btn-dark">
-                        Dislike ({{ num_dislikes }})
+                        <i class="fas fa-thumbs-down"></i>
+                          &nbsp; {{ num_dislikes }}
                       </button>
                     </a>
                   {% endif %}
