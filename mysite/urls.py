@@ -44,7 +44,7 @@ urlpatterns = [
     path('profile/', user_views.view_profile, name='profile'),
     url(r'^profile/(?P<pk>\d+)/$', user_views.view_profile, name='profile_with_pk'),
     path('profile/edit/', user_views.edit_profile, name='edit_profile'),
-    path('profile/MyQuestions/', UserQuestionView.as_view(), name='myqs'),
+    #path('profile/MyQuestions/', UserQuestionView.as_view(), name='myqs'),
 
     url(r'^profile/(?P<username>\w+)/$', user_views.profile_page, name='public_profile'),
 
