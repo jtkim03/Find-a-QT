@@ -145,8 +145,22 @@ class AnswerQuestionRelatedTests(TestCase):
         q1 = Question.objects.create(body="What is life?", class_name ="PHIL 1710", author_name = 'Josh', topic = 'Computer Science', urgency = 'No rush')
         a1 = Answer.objects.create(post=q1, text ="Google", author_name = 'Josh')
     def relatedmodelset(self):
+        q1 = Question.objects.get(body="What is life?")
         answer_set = q1.answer.all()
-        Q1 = Question.objects.get(body="What is life?")
-        self.assertEqual(answer_set[0], Q1)
+        A1 = Answer.objects.get(text ="Google")
+        self.assertEqual(answer_set[0], A1)
+
+class AnswerQuestionRelatedTestsMultiple(TestCase):
+    def setUp(self):
+        q1 = Question.objects.create(body="What is life?", class_name ="PHIL 1710", author_name = 'Josh', topic = 'Computer Science', urgency = 'No rush')
+        a1 = Answer.objects.create(post=q1, text ="Google", author_name = 'Josh')
+        a2 = Answer.objects.create(post=q1, text ="Chegg", author_name = 'Josh')
+    def relatedmodelset(self):
+        q1 = Question.objects.get(body="What is life?")
+        answer_set = q1.answer.all()
+        A1 = Answer.objects.get(text ="Google")
+        A2 = Answer.objects.get(text ="Chegg")
+        self.assertEqual(answer_set[0], A1)
+        self.assertEqual(answer_set[1], A2)
 
 
