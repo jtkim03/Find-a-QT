@@ -55,7 +55,6 @@ class Profile(models.Model):
                                       default=FRESHMAN,
                                       blank=True)
 
-
     def __str__(self):
         return f"{self.user.username}'s Profile"
 
@@ -69,21 +68,22 @@ class Profile(models.Model):
 
 
 class Like(models.Model):
-    ''' like  user '''
+    users = models.ManyToManyField(User, related_name='like_set')
+    current_user = models.ForeignKey(User, related_name='owner', on_delete=models.CASCADE, null=True)
 
-    users = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-    profiles = models.ForeignKey(Profile, on_delete=models.CASCADE, default=None)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    @classmethod
+    def give_like(cls, current_user, new_like):
+        like, created = cls.objects.get_or_create(
+            current_user=current_user
+        )
+        like.users.add(new_like)
 
 
-"""class DisLike(models.Model):
-    ''' Dislike  user '''
-
-    profile = models.OneToOneField(Profile, related_name="dis_likes", on_delete=models.CASCADE)
-    users = models.ManyToManyField(User, related_name='requirement_comment_dis_likes')
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return str(self.profile.name)[:30]"""
+    @classmethod
+    def get_num_likes(cls, current_user):
+        sum = 0
+        for i in cls.objects.all():
+            for j in i.users.all():
+                if current_user == j:
+                    sum += 1
+        return sum

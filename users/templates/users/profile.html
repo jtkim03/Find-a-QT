@@ -45,11 +45,10 @@
     <div class="media-body">
       <h2 class="account-heading">{{user.first_name}} {{user.last_name}}</h2>
       <p><i>{{ user.profile.year_in_school }}, {{ user.profile.major }}</i></p>
-      <form action="{% url 'profile_with_pk' pk=user.pk %}" method="get">
-        <input class="btn btn-outline-info" type="submit" value="Like this User" name="mybtn"/> {{ user.profile.like_set.all.count }}
-      </form>
-      <br>
-      <input class="btn btn-outline-info" type="submit" value="Dislike this User" />
+      <a href="{% url 'like' pk=user.pk %}">
+        <button type="button" class="btn btn-outline-info">Like ({{ num_likes }})</button>
+      </a>
+
     </div>
 
   </div>

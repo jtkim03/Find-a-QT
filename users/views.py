@@ -30,7 +30,12 @@ def view_profile(request, pk=None):
     else:
         user = request.user
     other_users = User.objects.all()
-    args = {'user': user, 'users': other_users}
+
+    num_likes = Like.get_num_likes(user)
+
+
+
+    args = {'user': user, 'users': other_users, 'num_likes': num_likes}
     return render(request, 'users/profile.html', args)
 
 
@@ -60,24 +65,10 @@ def profile_page(request, username):
     user = get_object_or_404(User, username=username)
     return render(request, 'users/public_profile.html', {'profile_user': user})
 
-"""@login_required
-def like(request, profile_id):
-    new_like, created = Like.objects.get_or_create(user=request.user, profile_id=profile_id)
-    if (request.GET.get('mybtn')):
-        if created:
-            # the user already liked this picture before
-            return render(request, 'users/profile.html/', {})
-        else:
-            # oll korrekt
-            new_like = Like.objects.create(users=request.user, profiles=profile_id)
-            return render(request, 'users/profile.html/', {'new_like': new_like})"""
-
-
-
-
-
-
-
+@login_required
+def like(request, pk):
+    Like.give_like(request.user, User.objects.get(pk=pk))
+    return redirect('faqt-home')
 
 
 
