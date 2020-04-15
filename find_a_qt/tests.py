@@ -118,25 +118,35 @@ class RoomFormTest(TestCase):
 
 class AnswerPostTest(TestCase):
      def test_str(self):
-        self.test_user = User.objects.create_user('JohnD', 'johnd@mail.com', 'johnpassword')
-        self.test_user2 = User.objects.create_user('JohnN', 'johnd@mail.com', 'johnpassword212')
-        a1 = Answer.objects.create(post=self.test_user, text ="Google", author_name = 'Josh')
-        a2 = Answer.objects.create(post=self.test_user2, text ="Google", author_name = 'Josh')
-        self.assertEqual(a1.post, self.test_user)
-        self.assertEqual(a2.post, self.test_user2)
+        q1 = Question.objects.create(body="What is life?", class_name ="PHIL 1710", author_name = 'Josh', topic = 'Computer Science', urgency = 'No rush')
+        q2 = Question.objects.create(body="What isn't life?", class_name ="PHIL 1710", author_name = 'Josh', topic = 'Computer Science', urgency = 'No rush')
+        a1 = Answer.objects.create(post=q1, text ="Google", author_name = 'Josh')
+        a2 = Answer.objects.create(post=q2, text ="Google", author_name = 'Josh')
+        self.assertEqual(a1.post, q1)
+        self.assertEqual(a2.post, q2)
 
 class AnswerFormTest(TestCase):
     def test_form_true(self):
-        self.test_user = User.objects.create_user('JohnD', 'johnd@mail.com', 'johnpassword')
-        a1 = Answer.objects.create(post=self.test_user, text ="Google", author_name = 'Josh')
-        data = {'post': self.test_user, 'text': a1.text}
+        sq1 = Question.objects.create(body="What is life?", class_name ="PHIL 1710", author_name = 'Josh', topic = 'Computer Science', urgency = 'No rush')
+        a1 = Answer.objects.create(post=sq1, text ="Google", author_name = 'Josh')
+        data = {'post': sq1, 'text': a1.text}
         form = AnswerForm(data=data)
         self.assertTrue(form.is_valid())
 
     def test_form_false(self):
-        self.test_user = User.objects.create_user('JohnD', 'johnd@mail.com', 'johnpassword')
-        a1 = Answer.objects.create(post=self.test_user, text ="Google", author_name = 'Josh')
+        sq1 = Question.objects.create(body="What is life?", class_name ="PHIL 1710", author_name = 'Josh', topic = 'Computer Science', urgency = 'No rush')
+        a1 = Answer.objects.create(post=sq1, text ="Google", author_name = 'Josh')
         data = {'text': a1.text}
         form = AnswerForm(data=data)
         self.assertFalse(form.is_valid())
+
+class AnswerQuestionRelatedTests(TestCase):
+    def setUp(self):
+        q1 = Question.objects.create(body="What is life?", class_name ="PHIL 1710", author_name = 'Josh', topic = 'Computer Science', urgency = 'No rush')
+        a1 = Answer.objects.create(post=q1, text ="Google", author_name = 'Josh')
+    def relatedmodelset(self):
+        answer_set = q1.answer.all()
+        Q1 = Question.objects.get(body="What is life?")
+        self.assertEqual(answer_set[0], Q1)
+
 
