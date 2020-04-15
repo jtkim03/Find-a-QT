@@ -21,6 +21,20 @@ def home(request):
     context = {}
     return render(request,'find_a_qt/home.html',context)
 
+def search_view(request):
+    try:
+        k = request.GET.get('k')
+    except:
+        k = None
+    if k:
+        questions = Question.objects.filter(class_name__icontains= k)
+        context = {'query': k, 'questions':questions}
+        template = 'find_a_qt/search_results.html'
+    else:
+        template = 'find_a_qt/search_question.html'
+    return render(request,template,context)
+
+
 class QuestionListView(ListView):
     model = Question
     template_name = 'find_a_qt/questions.html'
@@ -67,7 +81,7 @@ def answer_post(request):
         return HttpResponseRedirect('/questions/')
 
     context['form'] = form
-    return render(request, 'find_a_qt/question_form.html', context)
+    return render(request, 'find_a_qt/answer_form.html', context)
 
 def room_post(request):
     context = {}
@@ -144,5 +158,16 @@ def tutor_register(request):
     context['form'] = form
 
     return render(request, 'users/tutorregister.html', context)
+
+def user_history(request):
+    history = Question.objects.filter(author_name=request.user).values()
+    return render(request,'find_a_qt/user_questions.html',{'history':history})
+
+def question_answers(request,pk):
+    questions = Question.objects.filter(id=pk).values()
+    history = Answer.objects.filter(post_id=pk).values()
+    # history = Answer.objects.all().values()
+    return render(request,'find_a_qt/answer_question.html',{'history':history, 'questions':questions})
+
 
 

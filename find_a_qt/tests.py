@@ -2,60 +2,56 @@ from django.test import TestCase
 from .models import Question
 from users.models import Profile
 from django.contrib.auth.models import User
-
-#Tests whether the thing returned by the Student model under str is equal to what it should be
-#class TutorStrTestCase(TestCase):
-#    def setUp(self):
-#        Tutor.objects.create(first_name="John", last_name="Doe", phone_number = '+14124839124', major = 'CS', year_in_school = 'FR')
-#        #Tutor.objects.create(first_name="John", last_name="Doe", phone_number = '+14124839124', major = 'CS', year_in_school = 'FR')
-#        #Animal.objects.create(name="cat", sound="meow")
-
-#    def test_str(self):
-#        """Str returns the correct value (first and last name)"""
-#        John = Tutor.objects.get(first_name="John")
-#        self.assertEqual(str(John), 'John Doe')
-
-
-#Tests whether the thing returned by the Student model under str is equal to what it should be
-'''
-class StudentStrTestCase(TestCase):
-    def setUp(self):
-        Student.objects.create(first_name="Jane", last_name="Doe", phone_number = '+14134839124', major = 'CS', year_in_school = 'SR')
-
-    def test_str(self):
-        """Str returns the correct value (first and last name)"""
-        Jane = Student.objects.get(first_name="Jane")
-        self.assertEqual(str(Jane), 'Jane Doe')
-'''
-
-#Tests whether creating a new user with an already existing phone number creates an error
-# class StudentClashNumber(TestCase):
-#     def setUp(self):
-#         Student.objects.create(first_name="Jane", last_name="Doe", phone_number = '+14134839124', major = 'CS', year_in_school = 'SR')
-
-#     def test_error_ret(self):
-#         """Str returns the correct value (first and last name)"""
-#         Jane = Student.objects.get(first_name="Jane")
-#         Student.objects.create(first_name="Jane", last_name="Doe", phone_number = '+14134839124', major = 'CS', year_in_school = 'SR')
+from django.core.files.uploadedfile import SimpleUploadedFile
+from django.db import IntegrityError
+from django.conf import settings
+import os 
 
 class QuestionStrTestCase(TestCase):
     def setUp(self):
-        Question.objects.create(body="What is life?", class_name ="PHIL 1710", author_name = 'MudBone', topic = 'CS')
-        #Tutor.objects.create(first_name="John", last_name="Doe", phone_number = '+14124839124', major = 'CS', year_in_school = 'FR')
-        #Animal.objects.create(name="cat", sound="meow")
+        Question.objects.create(body="What is life?", class_name ="PHIL 1710", author_name = 'Josh', topic = 'CS')
 
     def test_str(self):
         """Str returns the correct value (first and last name)"""
         Q1 = Question.objects.get(body="What is life?")
         self.assertEqual(str(Q1), 'What is life?')
 
+''' Commented because it creates a new photo everytime in question_images without  way to automatically delete it after the test
+class QuestionPhotoTestCase(TestCase):
+    def setUp(self):
+        question = Question.objects.create(body="Image Test", class_name ="ASTR 1710", author_name = 'Josh', topic = 'ASTR',
+        image = SimpleUploadedFile(name='croppedlogo.png', content=open('find_a_qt/static/find_a_qt/images/croppedlogo.png', 'rb').read(), content_type='image/jpeg'))
+    def test_str(self):
+        self.assertEqual(Question.objects.count(), 1)
+'''
+
+class QuestionIndexTest(TestCase):
+    def setUp(self):
+        Question.objects.create(body="What is life?", class_name ="PHIL 1710", author_name = 'Josh', topic = 'CS')
+        Question.objects.create(body="What is 9+10?", class_name ="MATH 101", author_name = 'Drake', topic = 'MATH')
+        Question.objects.create(body="How do I do 3240?", class_name ="CS 3240", author_name = 'FindaQT', topic = 'CS')
+
+    def test_str(self):
+        response = self.client.get('/questions/')
+        self.assertContains(response, 'What is life?')
+        self.assertContains(response, 'What is 9+10?')
+        self.assertContains(response, 'How do I do 3240?')
 
 class ProfileStrTestCase(TestCase):
     def setUp(self):
         self.test_user = User.objects.create_user('JohnD', 'johnd@mail.com', 'johnpassword')
 
-
     def test_str(self):
         test_user = self.test_user
         test_profile = Profile.objects.get(user=test_user)
         self.assertEqual(str(test_profile), "JohnD's Profile")
+
+class UserCreationFailCase(TestCase):
+    def setUp(self):
+        self.test_user = User.objects.create_user('JohnD', 'johnd@mail.com', 'johnpassword')
+
+    def test_str(self):
+        try:
+            self.test_user2 = User.objects.create_user('JohnD', 'johnd@mail.com', 'johnpassword')
+        except:
+            self.assertRaises(AttributeError)

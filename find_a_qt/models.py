@@ -17,17 +17,17 @@ YEAR_IN_SCHOOL_CHOICES = [
     (SENIOR, 'Senior'),
     (GRADUATE, 'Graduate'),
 ]
-UNDECIDED = 'UNDE'
-ASTRONOMY = 'ASTR'
-BIOLOGY = 'BIO'
-CHEMISTRY = 'CHEM'
-COMPUTER_SCIENCE = 'CS'
-ENGINEERING = 'ENGR'
-EARTH_SCIENCES = 'ES'
-HEALTH_SCIENCES = 'HS'
-INFORMATION_TECHNOLOGY = 'IT'
-MATHEMATICS = 'MATH'
-PHYSICS = 'PHYS'
+UNDECIDED = 'Undecided'
+ASTRONOMY = 'Astronomy'
+BIOLOGY = 'Biology'
+CHEMISTRY = 'Chemistry'
+COMPUTER_SCIENCE = 'Computer Science'
+ENGINEERING = 'Engineering'
+EARTH_SCIENCES = 'Earth Sciences'
+HEALTH_SCIENCES = 'Health Sciences'
+INFORMATION_TECHNOLOGY = 'Information Technology'
+MATHEMATICS = 'Math'
+PHYSICS = 'Physics'
 MAJOR_CHOICES = [
     (UNDECIDED, 'Undecided'),
     (ASTRONOMY, 'Astronomy'),
