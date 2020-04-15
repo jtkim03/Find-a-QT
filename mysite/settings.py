@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'django_cleanup'
+
 ]
 
 #AUTH_USER_MODEL = 'users.CustomUser'
@@ -135,9 +137,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 '''
@@ -178,5 +177,3 @@ TWILIO_ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID', None)
 TWILIO_API_KEY = os.environ.get('TWILIO_API_KEY', None)
 TWILIO_API_SECRET = os.environ.get('TWILIO_API_SECRET', None)
 TWILIO_CHAT_SERVICE_SID = os.environ.get('TWILIO_CHAT_SERVICE_SID', None)
-
-

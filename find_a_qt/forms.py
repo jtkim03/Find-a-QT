@@ -99,7 +99,7 @@ class QuestionForm(forms.ModelForm):
 class AnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
-        fields = ('post', 'text', 'upvotes')
+        fields = ('post', 'text', 'upvotes', 'image')
 
 class RoomForm(forms.ModelForm):
     class Meta:

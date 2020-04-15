@@ -25,7 +25,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from chat.models import Room
-
+from find_a_qt.models import Question
 
 urlpatterns = [
     path('',TemplateView.as_view(template_name = 'find_a_qt/home.html'), name='faqt-home'), #TODO Merge this login template with homepage
@@ -42,6 +42,8 @@ urlpatterns = [
     path('profile/', user_views.view_profile, name='profile'),
     url(r'^profile/(?P<pk>\d+)/$', user_views.view_profile, name='profile_with_pk'),
     path('profile/edit/', user_views.edit_profile, name='edit_profile'),
+    path('profile/MyQuestions/', UserQuestionView.as_view(), name='myqs'),
+
     url(r'^profile/(?P<username>\w+)/$', user_views.profile_page, name='public_profile'),
 
     path('questions/', QuestionListView.as_view(), name='viewquestions'),
@@ -60,8 +62,9 @@ urlpatterns = [
             auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('reset-password/complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('my-questions/', user_history, name='user_question'),
-
-    url(r'^like/(?P<pk>\d+)/$', user_views.like, name='like')
+    # path('answer-question/',question_answers,name='answer_question'),
+    path('answers/<int:pk>/',question_answers,name='answer_question'),
+    url(r'^like/(?P<pk>\d+)/$', user_views.like, name='like'),
 ]
 
 if settings.DEBUG:

@@ -1,7 +1,7 @@
 from django.urls import path
 
 from . import views
-#from django.contrib.staticfiles.URLs import staticfiles_urlpatterns
+from django.contrib.staticfiles.URLs import staticfiles_urlpatterns
 from .views import QuestionListView, QuestionDetailView, QuestionCreateView,search_view
 
 urlpatterns = [

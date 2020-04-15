@@ -106,7 +106,7 @@ class Question(models.Model):
 
     class_name = models.CharField(max_length=50, default = "")
     author_name = models.CharField(max_length=50, default = "Anonymous")
-    #author = models.ForeignKey(User, null=True, on_delete=models.CASCADE, default = None)
+    #author = models.ForeignKey(User,null=True, on_delete=models.CASCADE, default = None)
 
     session_date = models.DateField(blank = False, null = False, default = datetime.now)
     session_time =  models.TimeField( default = datetime.now)
@@ -132,11 +132,18 @@ class Question(models.Model):
 
 
 class Answer(models.Model):
-    post = models.ForeignKey(Question, on_delete=models.CASCADE)
+    class stars(models.IntegerChoices):
+        One = 1
+        Two = 2
+        Three = 3
+        Four = 4
+        Five = 5
+    post = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='answer', default=None)
     author_name = models.CharField(max_length=50, default = "Anonymous")
     text = models.TextField(max_length = 500)
     time_submission = models.DateTimeField(auto_now=True,)
     upvotes = models.IntegerField(default=0)
+    image = models.ImageField(upload_to='answer_images/', blank = True, default=None) 
     #questionid
     def __str__(self):
         return self.text

@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.contrib.auth.models import User
 from .forms import StudentRegistration, TutorRegistrationForm, QuestionForm, AnswerForm, RoomForm
 from django import forms
 from .models import Student, Question, Answer
@@ -47,6 +48,7 @@ class AnswerListView(ListView):
 class QuestionDetailView(DetailView):
     model = Question
 
+
 # class QuestionCreateView(CreateView):
 #     model = Question
 #     fields = ['body', 'topic', 'class_name', 'author_name', 'urgency', 'session_date', 'image']
@@ -54,6 +56,15 @@ class QuestionDetailView(DetailView):
 #     def form_valid(self, form):
 #         form.instance.author = self.request.user
 #         return super().form_valid(form)
+
+class UserQuestionView(ListView):
+    model = Question
+    template_name = 'user_posts.html'
+
+    def get_query_set(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Question.objects.filter(author=user)
+
 
 def answer_post(request):
     context = {}
@@ -152,9 +163,11 @@ def user_history(request):
     history = Question.objects.filter(author_name=request.user).values()
     return render(request,'find_a_qt/user_questions.html',{'history':history})
 
-# def question_answers(request):
-#     answers = Answer.objects.filter(author_name=request.user).values()
-#     return render(request,'find_a_qt/user_questions.html',{'history':history})
+def question_answers(request,pk):
+    questions = Question.objects.filter(id=pk).values()
+    history = Answer.objects.filter(post_id=pk).values()
+    # history = Answer.objects.all().values()
+    return render(request,'find_a_qt/answer_question.html',{'history':history, 'questions':questions})
 
 
 
