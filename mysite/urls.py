@@ -17,7 +17,9 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include, re_path
-from find_a_qt.views import home, student_register, tutor_register, QuestionListView, QuestionDetailView, question_post, answer_post, room_post, AnswerListView, user_history
+from find_a_qt.views import home, student_register, tutor_register, QuestionListView, \
+    QuestionDetailView, question_post, answer_post, room_post, \
+    AnswerListView, user_history, UserQuestionView, question_answers
 from django.views.generic import TemplateView
 from users import views as user_views
 from find_a_qt import views as find_a_qt_views
