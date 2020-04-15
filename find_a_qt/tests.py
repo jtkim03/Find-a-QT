@@ -114,3 +114,29 @@ class RoomFormTest(TestCase):
         data = { 'slug': w.slug, 'description': w.description, }
         form = RoomForm(data=data)
         self.assertFalse(form.is_valid())
+
+
+class AnswerPostTest(TestCase):
+     def test_str(self):
+        self.test_user = User.objects.create_user('JohnD', 'johnd@mail.com', 'johnpassword')
+        self.test_user2 = User.objects.create_user('JohnN', 'johnd@mail.com', 'johnpassword212')
+        a1 = Answer.objects.create(post=self.test_user, text ="Google", author_name = 'Josh')
+        a2 = Answer.objects.create(post=self.test_user2, text ="Google", author_name = 'Josh')
+        self.assertEqual(a1.post, self.test_user)
+        self.assertEqual(a2.post, self.test_user2)
+
+class AnswerFormTest(TestCase):
+    def test_form_true(self):
+        self.test_user = User.objects.create_user('JohnD', 'johnd@mail.com', 'johnpassword')
+        a1 = Answer.objects.create(post=self.test_user, text ="Google", author_name = 'Josh')
+        data = {'post': self.test_user, 'text': a1.text}
+        form = AnswerForm(data=data)
+        self.assertTrue(form.is_valid())
+
+    def test_form_false(self):
+        self.test_user = User.objects.create_user('JohnD', 'johnd@mail.com', 'johnpassword')
+        a1 = Answer.objects.create(post=self.test_user, text ="Google", author_name = 'Josh')
+        data = {'text': a1.text}
+        form = AnswerForm(data=data)
+        self.assertFalse(form.is_valid())
+
