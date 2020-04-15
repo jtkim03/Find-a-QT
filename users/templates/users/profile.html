@@ -23,17 +23,32 @@
           <a href="/chat/new">Create a Chat Room</a>
         </li>
       </ul>
-
     </nav>
+    <br>
+    <div class="container">
+      <h2><u>Other Users</u></h2>
+      {% for user in users %}
+      {% if user != request.user %}
+      <a href="{% url 'profile_with_pk' pk=user.pk %}">
+        <h6>{{ user.username }}</h6>
+      </a>
+      {% endif %}
+      {% endfor %}
+    </div>
     <!-- Page Content -->
   </div>
 </div>
+
 <div class="content-section" align="justify">
   <div class="media">
     <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
     <div class="media-body">
       <h2 class="account-heading">{{user.first_name}} {{user.last_name}}</h2>
       <p><i>{{ user.profile.year_in_school }}, {{ user.profile.major }}</i></p>
+      <a href="{% url 'like' pk=user.pk %}">
+        <button type="button" class="btn btn-outline-info">Like ({{ num_likes }})</button>
+      </a>
+
     </div>
 
   </div>
@@ -60,13 +75,7 @@
     {% endif %}
     <br>
 </div>
-<div class="container">
-  <h2>Other Users</h2>
-  {% for user in users %}
-    <a href="{% url 'profile_with_pk' pk=user.pk %}">
-      <h6>{{ user.username }}</h6>
-    </a>
 
-  {% endfor %}
-</div>
+
+
 {% endblock %}

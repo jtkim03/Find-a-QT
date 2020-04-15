@@ -4,6 +4,7 @@ from find_a_qt.models import Student,Tutor
 from PIL import Image
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+import statistics as stats
 
 class Profile(models.Model):
     UNDECIDED = 'Undecided'
@@ -64,3 +65,25 @@ class Profile(models.Model):
             output_size = (300,300)
             img.thumbnail(output_size)
             img.save(self.image.path)
+
+
+class Like(models.Model):
+    users = models.ManyToManyField(User, related_name='like_set')
+    current_user = models.ForeignKey(User, related_name='owner', on_delete=models.CASCADE, null=True)
+
+    @classmethod
+    def give_like(cls, current_user, new_like):
+        like, created = cls.objects.get_or_create(
+            current_user=current_user
+        )
+        like.users.add(new_like)
+
+
+    @classmethod
+    def get_num_likes(cls, current_user):
+        sum = 0
+        for i in cls.objects.all():
+            for j in i.users.all():
+                if current_user == j:
+                    sum += 1
+        return sum

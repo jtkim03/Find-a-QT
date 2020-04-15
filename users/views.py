@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm #not use
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, HttpResponseRedirect
 from django.contrib.auth.models import User
+from .models import Profile, Like
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def register(request):
@@ -28,7 +30,12 @@ def view_profile(request, pk=None):
     else:
         user = request.user
     other_users = User.objects.all()
-    args = {'user': user, 'users': other_users}
+
+    num_likes = Like.get_num_likes(user)
+
+
+
+    args = {'user': user, 'users': other_users, 'num_likes': num_likes}
     return render(request, 'users/profile.html', args)
 
 
@@ -57,3 +64,11 @@ def edit_profile(request):
 def profile_page(request, username):
     user = get_object_or_404(User, username=username)
     return render(request, 'users/public_profile.html', {'profile_user': user})
+
+@login_required
+def like(request, pk):
+    Like.give_like(request.user, User.objects.get(pk=pk))
+    return redirect('faqt-home')
+
+
+
