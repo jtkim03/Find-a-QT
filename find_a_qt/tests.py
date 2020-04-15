@@ -1,6 +1,7 @@
 from django.test import TestCase
 from .models import Question
 from users.models import Profile
+from .models import Question, Answer
 from django.contrib.auth.models import User
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.db import IntegrityError
