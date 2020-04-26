@@ -12,9 +12,6 @@
       <div class="container">
         <div class="row">
           <div class="media-left">
-            {% if object.image %}
-            <img src="{{object.image.url}}" class="media-object" style="width:999px">
-            {% endif %}
           </div>
         </div>
 
@@ -31,9 +28,12 @@
             <h2 class="article-title">{{ object.class_name }}</h2>
             <p class="article-content">{{ object.body }}</p>
             <p class="article-content"><b>Urgency: </b> {{ object.urgency }}</p>
-            <p class="article-content"><b>Preferred date and time of session: </b> {{ object.session_date }},{{ object.session_time }}</p>
+            {% if object.image %}
+            <img src="{{object.image.url}}" class="media-object" style="width:999px">
+            {% endif %}
           </div>
           <br>
+          
         </div>
     </article>
   </div>
@@ -50,9 +50,6 @@
       <div class="row">
     <article class="media content-section col-md-12">
         <div class="media-body">  
-          {% if answer.image %}
-            <img src="{{answer.image.url}}" class="media-object" style="width:999px">
-            {% endif %}
           <div class="article-metadata">
             <h4>
             <a class="mr-2" href="questions/{{question.id}}">{{ answer.author_name }}</a>
@@ -60,6 +57,9 @@
             <h4>
           </div>
           <p class="article-content">{{ answer.text }}</p>
+          {% if answer.image %}
+          <img src="{{answer.image.url}}" class="media-object" style="width:999px">
+          {% endif %}
       </article>
       </div>
       </div>

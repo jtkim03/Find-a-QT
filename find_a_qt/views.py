@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.models import User
-from .forms import StudentRegistration, TutorRegistrationForm, QuestionForm, AnswerForm, RoomForm
+from .forms import QuestionForm, AnswerForm, RoomForm
 from django import forms
 from .models import Student, Question, Answer
 from allauth.socialaccount.models import SocialAccount
@@ -115,7 +115,6 @@ def question_post(request):
         class_name = form.cleaned_data.get('class_name')
         author_name = form.cleaned_data.get('author_name')
         urgency = form.cleaned_data.get('urgency')
-        session_date = form.cleaned_data.get('session_date')
         image = form.cleaned_data.get('image')
         instance.save()
         messages.success(request, f'Success! Created question {body}!')

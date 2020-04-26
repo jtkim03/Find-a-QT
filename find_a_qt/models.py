@@ -106,11 +106,7 @@ class Question(models.Model):
 
     class_name = models.CharField(max_length=50, default = "")
     author_name = models.CharField(max_length=50, default = "Anonymous")
-    #author = models.ForeignKey(User,null=True, on_delete=models.CASCADE, default = None)
-
-    session_date = models.DateField(blank = False, null = False, default = datetime.now)
-    session_time =  models.TimeField( default = datetime.now)
-    time_submission = models.DateTimeField(auto_now=True,)
+    time_submission = models.DateTimeField(auto_now=True)
 
     urgency = models.CharField(
         max_length=30,
@@ -118,7 +114,6 @@ class Question(models.Model):
         default=WHENEVER,
     )
     image = models.ImageField(upload_to='question_images/', blank = True) 
-    #topic??
 
     def get_absolute_url(self):
         return reverse('faqt-home')
