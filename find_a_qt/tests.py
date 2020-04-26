@@ -88,13 +88,13 @@ class QuestionFormTest(TestCase):
 
     def test_form_true(self):
         w = Question.objects.get(body="What is life?")
-        data = {'body': w.body, 'class_name': w.class_name, 'class_name': w.class_name, 'author_name': w.author_name, 'topic': w.topic, 'urgency':w.urgency, 'session_date':w.session_date, 'session_time': w.session_time}
+        data = {'body': w.body, 'class_name': w.class_name, 'class_name': w.class_name, 'author_name': w.author_name, 'topic': w.topic, 'urgency':w.urgency}
         form = QuestionForm(data=data)
         self.assertTrue(form.is_valid())
 
     def test_form_false(self):
         w = Question.objects.get(body="What is life?")
-        data = {'body': w.body, 'author_name': w.author_name, 'topic': w.topic, 'urgency':w.urgency, 'session_date':w.session_date, 'session_time': w.session_time}
+        data = {'body': w.body, 'author_name': w.author_name, 'topic': w.topic, 'urgency':w.urgency}
         form = QuestionForm(data=data)
         self.assertFalse(form.is_valid())
 
