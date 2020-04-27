@@ -14,7 +14,7 @@
 </div>
 <br>
 
-{% for answer in history %}
+{% for answer in get_question.answer.all %}
 
 <div class="container">
   <div class="row">
@@ -26,18 +26,18 @@
           <a href="{% url 'upvote_answer_question' answer_id=answer.id pk=get_question.id%}">
             <button type="button" class="btn btn-dark">
               <i class="fas fa-arrow-up"></i>
-              {{ answer.upvotes }}
+              {{ answer.get_num_upvotes }}
             </button>
           </a>
           <a href="{% url 'downvote_answer_question' answer_id=answer.id pk=get_question.id%}">
             <button type="button" class="btn btn-dark">
               <i class="fas fa-arrow-down"></i>
-              {{ answer.downvotes }}
+                {{ answer.get_num_downvotes }}
             </button>
           </a>
-        <h4>
+        </h4>
       </div>
-      <small class="article-content">{{ answer.time_submission }} EST</small>
+      <small class="article-content">{{ answer.when_published }}</small>
       <p class="article-content">{{ answer.text }}</p>
   </article>
   </div>

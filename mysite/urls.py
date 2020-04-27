@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include, re_path
-from find_a_qt.views import home, student_register, tutor_register, QuestionListView, \
+from find_a_qt.views import home, QuestionListView, \
     QuestionDetailView, question_post, answer_post, room_post, \
     AnswerListView, user_history, UserQuestionView, question_answers, upvote_question_detail,\
     upvote_answer_question, downvote_question_detail, downvote_answer_question
@@ -39,9 +39,6 @@ urlpatterns = [
     path('register/', user_views.register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name = 'users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name = 'users/logout.html'), name = 'logout'),
-    path('studentregister/', student_register, name='studentregister'),
-    #path('addstudent/', add_student, name='addstudent')
-    path('tutorregister/', tutor_register, name='tutorregister'),
     path('profile/', user_views.view_profile, name='profile'),
     url(r'^profile/(?P<pk>\d+)/$', user_views.view_profile, name='profile_with_pk'),
     path('profile/edit/', user_views.edit_profile, name='edit_profile'),

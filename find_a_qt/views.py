@@ -4,11 +4,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count
 from .forms import QuestionForm, AnswerForm, RoomForm
 from django import forms
-from .models import Student, Question, Answer, Upvote
+from .models import Student, Question, Answer
 from allauth.socialaccount.models import SocialAccount
 from django.template import RequestContext
+import operator
 
 from chat.models import Room
 
@@ -126,77 +128,49 @@ def question_post(request):
     context['form'] = form
     return render(request, 'find_a_qt/question_form.html', context)
 
-
-def student_register(request):
-    context = {}
-    form = StudentRegistration(request.POST or None, request.FILES or None)
-
-
-    if form.is_valid():
-        form.save()
-        context['form'] = form
-        first_name = form.cleaned_data.get('first_name')
-        last_name = form.cleaned_data.get('last_name')
-        messages.success(request, f'Success! an account has been created for {first_name} {last_name}!')
-        return render(request, 'find_a_qt/home.html', context)
-
-    context['form'] = form
-    return render(request, 'users/studentregister.html', context)
-
-def tutor_register(request):
-    context = {}
-    form = TutorRegistrationForm(request.POST or None, request.FILES or None)
-
-    if form.is_valid():
-        form.save()
-        context['form'] = form
-        first_name = form.cleaned_data.get('first_name')
-        last_name = form.cleaned_data.get('last_name')
-        messages.success(request, f'Success! an account has been created for {first_name} {last_name}!')
-        return render(request, 'find_a_qt/home.html', context)
-
-
-    context['form'] = form
-
-    return render(request, 'users/tutorregister.html', context)
-
 def user_history(request):
     history = Question.objects.filter(author_name=request.user).values()
     return render(request,'find_a_qt/user_questions.html',{'history':history})
 
 def question_answers(request,pk):
+
     questions = Question.objects.filter(id=pk).values()
     history = Answer.objects.filter(post_id=pk).values()
-    get_question = Question.objects.get(id=pk)
-    # history = Answer.objects.all().values()
-    return render(request,'find_a_qt/answer_question.html',{'history':history, 'questions':questions,
+    get_question = Question.objects.get(pk=pk)
+    return render(request,'find_a_qt/answer_question.html',{'history': history, 'questions': questions,
                                                             'get_question':get_question})
 
 
 @login_required
 def upvote_question_detail(request,answer_id,pk):
+
     answer = Answer.objects.get(id=answer_id)
-    answer.upvotes += 1
-    answer.save()
+    answer.upvotes.add(request.user)
+    answer.downvotes.remove(request.user)
+    #answer.save()
     return redirect('/questions/' + str(pk))
 
 @login_required
 def upvote_answer_question(request,answer_id,pk):
+
     answer = Answer.objects.get(id=answer_id)
-    answer.upvotes += 1
-    answer.save()
+    answer.upvotes.add(request.user)
+    answer.downvotes.remove(request.user)
+    #answer.save()
     return redirect('/answers/' + str(pk))
 
 @login_required
 def downvote_question_detail(request,answer_id,pk):
     answer = Answer.objects.get(id=answer_id)
-    answer.downvotes += 1
-    answer.save()
+    answer.downvotes.add(request.user)
+    answer.upvotes.remove(request.user)
+    #answer.save()
     return redirect('/questions/' + str(pk))
 
 @login_required
 def downvote_answer_question(request,answer_id,pk):
     answer = Answer.objects.get(id=answer_id)
-    answer.downvotes += 1
-    answer.save()
+    answer.downvotes.add(request.user)
+    answer.upvotes.remove(request.user)
+    #answer.save()
     return redirect('/answers/' + str(pk))

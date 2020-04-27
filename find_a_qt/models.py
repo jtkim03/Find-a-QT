@@ -4,6 +4,7 @@ from django.urls import reverse
 from datetime import datetime
 from django.utils import timezone
 from django.contrib.auth.models import User
+import math
 
 FRESHMAN = 'FR'
 SOPHOMORE = 'SO'
@@ -126,6 +127,7 @@ class Question(models.Model):
 
 
 
+
 class Answer(models.Model):
     class stars(models.IntegerChoices):
         One = 1
@@ -137,20 +139,64 @@ class Answer(models.Model):
     author_name = models.CharField(max_length=50, default = "Anonymous")
     text = models.TextField(max_length = 500)
     time_submission = models.DateTimeField(auto_now=True,)
-    upvotes = models.IntegerField(default=0)
-    downvotes = models.IntegerField(default=0)
+    upvotes = models.ManyToManyField(User, related_name='upvotes')
+    downvotes = models.ManyToManyField(User, related_name='downvotes')
     image = models.ImageField(upload_to='answer_images/', blank = True, default=None)
     #questionid
 
-    def add_upvote(self):
-        self.upvotes += 1
+    def when_published(self):
+        now = timezone.now()
+        diff= now - self.time_submission
 
-    def add_downvote(self):
-        self.downvotes += 1
+        if diff.days == 0 and diff.seconds >= 0 and diff.seconds < 60:
+            seconds= diff.seconds
+            if seconds == 1:
+                return str(seconds) +  "second ago"
+            else:
+                return str(seconds) + " seconds ago"
+
+        if diff.days == 0 and diff.seconds >= 60 and diff.seconds < 3600:
+            minutes= math.floor(diff.seconds/60)
+            if minutes == 1:
+                return str(minutes) + " minute ago"
+            else:
+                return str(minutes) + " minutes ago"
+
+        if diff.days == 0 and diff.seconds >= 3600 and diff.seconds < 86400:
+            hours= math.floor(diff.seconds/3600)
+            if hours == 1:
+                return str(hours) + " hour ago"
+            else:
+                return str(hours) + " hours ago"
+
+        # 1 day to 30 days
+        if diff.days >= 1 and diff.days < 30:
+            days= diff.days
+            if days == 1:
+                return str(days) + " day ago"
+            else:
+                return str(days) + " days ago"
+
+        if diff.days >= 30 and diff.days < 365:
+            months= math.floor(diff.days/30)
+
+            if months == 1:
+                return str(months) + " month ago"
+            else:
+                return str(months) + " months ago"
+
+        if diff.days >= 365:
+            years= math.floor(diff.days/365)
+            if years == 1:
+                return str(years) + " year ago"
+            else:
+                return str(years) + " years ago"
+
+    def get_num_upvotes(self):
+        return self.upvotes.count()
+
+    def get_num_downvotes(self):
+        return self.downvotes.count()
 
     def __str__(self):
         return self.text
-
-class Upvote(models.Model):
-    answerID = models.ForeignKey(Answer, on_delete=models.CASCADE)
-    userID = models.ForeignKey(User, on_delete=models.CASCADE)

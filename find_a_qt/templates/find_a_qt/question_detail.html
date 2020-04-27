@@ -56,13 +56,13 @@
                 <a href="{% url 'upvote_question_detail' answer_id=answer.id pk=question.id%}">
                   <button type="button" class="btn btn-dark">
                     <i class="fas fa-arrow-up"></i>
-                    {{ answer.upvotes }}
+                    {{ answer.get_num_upvotes }}
                   </button>
                 </a>
               <a href="{% url 'downvote_question_detail' answer_id=answer.id pk=question.id%}">
                 <button type="button" class="btn btn-dark">
                   <i class="fas fa-arrow-down"></i>
-                  {{ answer.downvotes }}
+                  {{ answer.get_num_downvotes }}
                 </button>
               </a>
             </h4>
