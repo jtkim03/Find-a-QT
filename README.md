@@ -21,11 +21,14 @@ https://www.postgresql.org/docs/12/index.html
 
 ### Articles:  
 https://www.twilio.com/blog/tag/django
+https://wsvincent.com/django-allauth-tutorial-custom-user-model/#basic-django
+https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud
 
 ### Misc:  
 https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p  
 https://www.youtube.com/playlist?list=PLPp4GCMxKSjCM9AvhmF9OHyyaJsN8rsZK  
 https://www.youtube.com/watch?v=ZTBexYIIOP8  
+https://www.youtube.com/watch?v=Tja4I_rgspI
 
 **And of course:**  
 https://stackoverflow.com/  
