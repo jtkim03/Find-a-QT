@@ -20,9 +20,9 @@ https://getbootstrap.com/docs/4.4/getting-started/introduction/
 https://www.postgresql.org/docs/12/index.html
 
 ### Articles:  
-https://www.twilio.com/blog/tag/django
-https://wsvincent.com/django-allauth-tutorial-custom-user-model/#basic-django
-https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud
+https://www.twilio.com/blog/tag/django  
+https://wsvincent.com/django-allauth-tutorial-custom-user-model/#basic-django  
+https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud  
 
 ### Misc:  
 https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p  
