@@ -3,10 +3,10 @@ project-101-find-a-qt created by GitHub Classroom
 
 To launch application locally, complete the following:
 - Create a virtual environment with `py -m venv env` and activate it with `.\env\Scripts\activate`     
-- pip install -r requirements.txt
+- `pip install -r requirements.txt`
 - Create a postgreSQL database named "find_a_qt"
-- python manage.py migrate
-- python manage.py runserver
+- `python manage.py migrate`
+- `python manage.py runserver`
 - Go to localhost:8000
 
 Heroku Link
