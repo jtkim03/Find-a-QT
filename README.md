@@ -1,5 +1,6 @@
 # project-101-find-a-qt [![Build Status](https://travis-ci.com/uva-cs3240-s20/project-101-find-a-qt.svg?token=u7XZTQtzmqfd5ok7qohJ&branch=master)](https://travis-ci.com/uva-cs3240-s20/project-101-find-a-qt)
-project-101-find-a-qt created by GitHub Classroom
+project-101-find-a-qt created by GitHub Classroom  
+A forum based web tutoring application  
 
 To launch application locally, complete the following:
 - Create a virtual environment with `py -m venv env` and activate it with `.\env\Scripts\activate`     
