@@ -31,9 +31,14 @@ def view_profile(request, pk=None):
         user = request.user
     other_users = User.objects.all()
 
+    num_likes = Like.get_num_likes(user)
+    num_dislikes = Dislike.get_num_dislikes(user)
+
     args = {
         'user': user,
         'users': other_users,
+        'num_likes': num_likes,
+        'num_dislikes': num_dislikes
     }
     return render(request, 'users/profile.html', args)
 
@@ -76,7 +81,7 @@ def like(request, username):
         Like.give_like(request.user, User.objects.get(username=username))
         return redirect('/profile/' + str(username))
     else:
-        return redirect('profile')
+        return redirect('/profile/' + str(username))
 
 @login_required
 def dislike(request, username):
@@ -85,7 +90,7 @@ def dislike(request, username):
         Dislike.give_dislike(request.user, User.objects.get(username=username))
         return redirect('/profile/' + str(username))
     else:
-        return redirect('profile')
+        return redirect('/profile/' + str(username))
 
 
 

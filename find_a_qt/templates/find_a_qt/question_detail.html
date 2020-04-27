@@ -33,7 +33,7 @@
             {% endif %}
           </div>
           <br>
-          
+
         </div>
     </article>
   </div>
@@ -49,12 +49,23 @@
     <div class="container">
       <div class="row">
     <article class="media content-section col-md-12">
-        <div class="media-body">  
+        <div class="media-body">
           <div class="article-metadata">
             <h4>
-            <a class="mr-2" href="questions/{{question.id}}">{{ answer.author_name }}</a>
-            <small class="article-content">Upvotes: {{answer.upvotes}} </small>
-            <h4>
+              <a class="mr-2" href="profile/{{answer.author_name}}">{{ answer.author_name }}</a>
+                <a href="{% url 'upvote_question_detail' answer_id=answer.id pk=question.id%}">
+                  <button type="button" class="btn btn-dark">
+                    <i class="fas fa-arrow-up"></i>
+                    {{ answer.upvotes }}
+                  </button>
+                </a>
+              <a href="{% url 'downvote_question_detail' answer_id=answer.id pk=question.id%}">
+                <button type="button" class="btn btn-dark">
+                  <i class="fas fa-arrow-down"></i>
+                  {{ answer.downvotes }}
+                </button>
+              </a>
+            </h4>
           </div>
           <p class="article-content">{{ answer.text }}</p>
           {% if answer.image %}

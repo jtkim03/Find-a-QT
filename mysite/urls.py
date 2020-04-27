@@ -19,7 +19,8 @@ from django.contrib.auth import views as auth_views
 from django.urls import path, include, re_path
 from find_a_qt.views import home, student_register, tutor_register, QuestionListView, \
     QuestionDetailView, question_post, answer_post, room_post, \
-    AnswerListView, user_history, UserQuestionView, question_answers
+    AnswerListView, user_history, UserQuestionView, question_answers, upvote_question_detail,\
+    upvote_answer_question, downvote_question_detail, downvote_answer_question
 from django.views.generic import TemplateView
 from users import views as user_views
 from find_a_qt import views as find_a_qt_views
@@ -68,6 +69,10 @@ urlpatterns = [
     path('answers/<int:pk>/',question_answers,name='answer_question'),
     url(r'^like/(?P<username>\w+)/$', user_views.like, name='like'),
     url(r'^dislike/(?P<username>\w+)/$', user_views.dislike, name='dislike'),
+    url(r'^upvote_q_d/(?P<answer_id>\d+)/(?P<pk>\d+)/$', upvote_question_detail, name='upvote_question_detail'),
+    url(r'^upvote_a_q/(?P<answer_id>\d+)/(?P<pk>\d+)/$', upvote_answer_question, name='upvote_answer_question'),
+    url(r'^downvote_q_d/(?P<answer_id>\d+)/(?P<pk>\d+)/$', downvote_question_detail, name='downvote_question_detail'),
+    url(r'^downvote_a_q/(?P<answer_id>\d+)/(?P<pk>\d+)/$', downvote_answer_question, name='downvote_answer_question'),
 ]
 
 if settings.DEBUG:

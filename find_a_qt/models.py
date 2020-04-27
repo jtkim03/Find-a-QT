@@ -77,7 +77,7 @@ class Tutor(models.Model):
         choices=YEAR_IN_SCHOOL_CHOICES,
         default=FRESHMAN,
     )
-    #tutor_img = models.ImageField(upload_to='templates/find_a_qt/images/') 
+    #tutor_img = models.ImageField(upload_to='templates/find_a_qt/images/')
     major = models.CharField(
         max_length = 30,
         choices = MAJOR_CHOICES,
@@ -113,17 +113,17 @@ class Question(models.Model):
         choices=URGENT_CHOICES,
         default=WHENEVER,
     )
-    image = models.ImageField(upload_to='question_images/', blank = True) 
+    image = models.ImageField(upload_to='question_images/', blank = True)
 
     def get_absolute_url(self):
         return reverse('faqt-home')
-    
+
     def __str__(self):
         return self.body
 
     def get_queryset(self):
         return Project.objects
-        
+
 
 
 class Answer(models.Model):
@@ -138,7 +138,19 @@ class Answer(models.Model):
     text = models.TextField(max_length = 500)
     time_submission = models.DateTimeField(auto_now=True,)
     upvotes = models.IntegerField(default=0)
-    image = models.ImageField(upload_to='answer_images/', blank = True, default=None) 
+    downvotes = models.IntegerField(default=0)
+    image = models.ImageField(upload_to='answer_images/', blank = True, default=None)
     #questionid
+
+    def add_upvote(self):
+        self.upvotes += 1
+
+    def add_downvote(self):
+        self.downvotes += 1
+
     def __str__(self):
         return self.text
+
+class Upvote(models.Model):
+    answerID = models.ForeignKey(Answer, on_delete=models.CASCADE)
+    userID = models.ForeignKey(User, on_delete=models.CASCADE)

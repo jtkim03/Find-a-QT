@@ -36,7 +36,7 @@
                 <div class="space">
                     <br>
 
-                    {% if profile_user != request.user %}
+
                     <a href="{% url 'like' username=profile_user.username %}">
                         <button type="button" class="btn btn-dark">
                             <i class="fas fa-thumbs-up"></i>
@@ -50,7 +50,7 @@
                             &nbsp; {{ num_dislikes }}
                         </button>
                     </a>
-                    {% endif %}
+
                 </div>
             </div>
             <div class="col-md-8">

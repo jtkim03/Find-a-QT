@@ -3,10 +3,12 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from .forms import QuestionForm, AnswerForm, RoomForm
 from django import forms
-from .models import Student, Question, Answer
+from .models import Student, Question, Answer, Upvote
 from allauth.socialaccount.models import SocialAccount
+from django.template import RequestContext
 
 from chat.models import Room
 
@@ -100,7 +102,7 @@ def room_post(request):
     return render(request, 'find_a_qt/room_form.html', context)
 
 
- 
+
 def question_post(request):
     context = {}
     form = QuestionForm(request.POST or None, request.FILES or None)
@@ -165,8 +167,36 @@ def user_history(request):
 def question_answers(request,pk):
     questions = Question.objects.filter(id=pk).values()
     history = Answer.objects.filter(post_id=pk).values()
+    get_question = Question.objects.get(id=pk)
     # history = Answer.objects.all().values()
-    return render(request,'find_a_qt/answer_question.html',{'history':history, 'questions':questions})
+    return render(request,'find_a_qt/answer_question.html',{'history':history, 'questions':questions,
+                                                            'get_question':get_question})
 
 
+@login_required
+def upvote_question_detail(request,answer_id,pk):
+    answer = Answer.objects.get(id=answer_id)
+    answer.upvotes += 1
+    answer.save()
+    return redirect('/questions/' + str(pk))
 
+@login_required
+def upvote_answer_question(request,answer_id,pk):
+    answer = Answer.objects.get(id=answer_id)
+    answer.upvotes += 1
+    answer.save()
+    return redirect('/answers/' + str(pk))
+
+@login_required
+def downvote_question_detail(request,answer_id,pk):
+    answer = Answer.objects.get(id=answer_id)
+    answer.downvotes += 1
+    answer.save()
+    return redirect('/questions/' + str(pk))
+
+@login_required
+def downvote_answer_question(request,answer_id,pk):
+    answer = Answer.objects.get(id=answer_id)
+    answer.downvotes += 1
+    answer.save()
+    return redirect('/answers/' + str(pk))

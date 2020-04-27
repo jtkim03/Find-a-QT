@@ -36,7 +36,14 @@
     <div class="media-body">
       <h2 class="account-heading">{{user.first_name}} {{user.last_name}}</h2>
       <p><i>{{ user.profile.year_in_school }}, {{ user.profile.major }}</i></p>
-
+      <button type="button" class="btn btn-dark">
+        <i class="fas fa-thumbs-up"></i>
+        &nbsp; {{ num_likes }}
+      </button>
+      <button type="button" class="btn btn-dark">
+        <i class="fas fa-thumbs-down"></i>
+        &nbsp; {{ num_dislikes }}
+      </button>
     </div>
 
   </div>

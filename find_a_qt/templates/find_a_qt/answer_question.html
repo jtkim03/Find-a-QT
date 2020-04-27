@@ -7,7 +7,7 @@
 
 {% block content %}
 <div class = "row col-md-12 mx-auto ml-3">
-<h2 class = mx-auto>Answers for 
+<h2 class = mx-auto>Answers for
   {% for question in questions %}
   <a href = '/questions/{{question.id}}'>{{question.body}} </a></h2>
   {% endfor %}
@@ -23,7 +23,18 @@
       <div class="article-metadata">
         <h4>
         <a class="mr-2" href="profile/{{answer.author_name}}">{{ answer.author_name }}</a>
-        <small class="article-content">Upvotes: {{answer.upvotes}} </small>
+          <a href="{% url 'upvote_answer_question' answer_id=answer.id pk=get_question.id%}">
+            <button type="button" class="btn btn-dark">
+              <i class="fas fa-arrow-up"></i>
+              {{ answer.upvotes }}
+            </button>
+          </a>
+          <a href="{% url 'downvote_answer_question' answer_id=answer.id pk=get_question.id%}">
+            <button type="button" class="btn btn-dark">
+              <i class="fas fa-arrow-down"></i>
+              {{ answer.downvotes }}
+            </button>
+          </a>
         <h4>
       </div>
       <small class="article-content">{{ answer.time_submission }} EST</small>

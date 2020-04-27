@@ -16,7 +16,7 @@ class QuestionForm(forms.ModelForm):
 class AnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
-        fields = ('post', 'text', 'upvotes', 'image')
+        fields = ('post', 'text', 'image')
 
 class RoomForm(forms.ModelForm):
     class Meta:
