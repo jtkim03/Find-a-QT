@@ -29,6 +29,7 @@ https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p
 https://www.youtube.com/playlist?list=PLPp4GCMxKSjCM9AvhmF9OHyyaJsN8rsZK  
 https://www.youtube.com/watch?v=ZTBexYIIOP8  
 https://www.youtube.com/watch?v=Tja4I_rgspI
+https://www.youtube.com/user/Max204204204 #Django tutorial series by Max Goodridge
 
 **And of course:**  
 https://stackoverflow.com/  

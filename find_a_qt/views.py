@@ -51,6 +51,7 @@ class AnswerListView(ListView):
 
 class QuestionDetailView(DetailView):
     model = Question
+    Answer.objects.all().order_by('-upvote.count')
 
 
 # class QuestionCreateView(CreateView):
@@ -133,7 +134,7 @@ def user_history(request):
     return render(request,'find_a_qt/user_questions.html',{'history':history})
 
 def question_answers(request,pk):
-
+    Answer.objects.all().order_by('-upvote.count')
     questions = Question.objects.filter(id=pk).values()
     history = Answer.objects.filter(post_id=pk).values()
     get_question = Question.objects.get(pk=pk)

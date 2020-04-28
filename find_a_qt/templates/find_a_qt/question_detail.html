@@ -19,7 +19,7 @@
         <div class="row">
           <div class="media-body">
             <div class="article-metadata">
-              <a class="mr-2" href="#">{{ object.author_name.upper }}</a>
+              <a class="mr-2" href="profile/{{object.author_name}}">{{ object.author_name.upper }}</a>
               <br>
               <small class="article-content">{{ object.time_submission }} EST</small>
 
@@ -53,7 +53,7 @@
           <div class="article-metadata">
             <h4>
               <a class="mr-2" href="profile/{{answer.author_name}}">{{ answer.author_name }}</a>
-                <a href="{% url 'upvote_question_detail' answer_id=answer.id pk=question.id%}">
+                <a href="{% url 'upvote_question_detail' answer_id=answer.id pk=question.id %}">
                   <button type="button" class="btn btn-dark">
                     <i class="fas fa-arrow-up"></i>
                     {{ answer.get_num_upvotes }}
